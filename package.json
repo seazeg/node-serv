@@ -1,0 +1,30 @@
+{
+  "name": "node-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "export PORT=3000 && node ./server/",
+    "dev": "pm2 start serv.config.js --only dev-server --watch",
+    "prod": "pm2 start serv.config.js --only prod-server --watch",
+    "test":"jest"
+  },
+  "author": "Evan.G",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "chalk": "^2.4.1",
+    "del": "^5.1.0",
+    "eg-utils": "^1.1.52",
+    "jest": "^24.9.0",
+    "koa": "^2.8.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-cors": "0.0.16",
+    "koa-morgan": "^1.0.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "puppeteer": "^1.11.0",
+    "puppeteer-cluster": "^0.17.0",
+    "request": "^2.88.0"
+  }
+}
