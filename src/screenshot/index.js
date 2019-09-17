@@ -1,7 +1,8 @@
-const router = require("koa-router")()
+const router = require('koa-router')()
 const run = require('./core')
 const chalk = require('chalk')
 const log = console.log;
+
 
 router.get('/api/screenshot', (ctx, next) => {
     return new Promise(function (resolve, reject) {
@@ -17,3 +18,6 @@ router.get('/api/screenshot', (ctx, next) => {
         })
     });
 })
+
+
+module.exports = router

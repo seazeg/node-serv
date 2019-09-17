@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+
+'use strict'
+// 定义脚手架的文件路径
+process.env.NODE_PATH = __dirname + '../node_modules'
+
+const program = require('commander')
+
+// 定义当前版本
+program
+    .version(require('../package').version)
+    .option('-c, --config <string>', '配置文件')
+    .option('-p, --procss <string>', '进程标识')
+
+// 定义使用方法
+program.usage('<command>')
+
+program
+    .command('start')
+    .description('启动服务')
+    .alias('st')
+    .action(() => {
+        require('../command/start')(program)
+    })
+
+program
+    .command('stop')
+    .description('进程停止')
+    .alias('sp')
+    .action(() => {
+        require('../command/stop')(program)
+    })
+
+program
+    .command('restart')
+    .description('进程重启')
+    .alias('re')
+    .action(() => {
+        require('../command/restart')(program)
+    })
+
+program
+    .command('delete')
+    .description('进程清除')
+    .alias('del')
+    .action(() => {
+        require('../command/delete')(program)
+    })
+
+program
+    .command('view')
+    .description('进程信息')
+    .alias('vi')
+    .action(() => {
+        require('../command/view')(program)
+    })
+
+program.parse(process.argv)
+
+if (!program.args.length) {
+    program.help()
+}

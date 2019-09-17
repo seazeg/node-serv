@@ -5,7 +5,7 @@
 
 */resource/
 */*.site
-*/build/
+**/build/
 */preview/
 */*.zip
 *.zip
@@ -33,14 +33,10 @@ dist/
 
 hs_err_pid*
 
-#idea files
-.idea/
-*.iml
-overlays/
-jxl.log
 
 node_modules/
 .vscode/
 
 spider/
 screenshot/*
+logs/*

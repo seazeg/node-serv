@@ -28,8 +28,9 @@ module.exports = async function run({
         })
         await autoScroll(page);
         log(chalk.yellow("开始截图.."))
+        let tempName = egu.guid()
         await page.screenshot({
-            path: `${storagePath}/${egu.guid()}.jpeg`,
+            path: `${storagePath}/${tempName}.jpeg`,
             quality: 100,
             fullPage: true,
             type: 'jpeg'
@@ -39,7 +40,7 @@ module.exports = async function run({
         log(chalk.yellow("done!"));
         return {
             data: {
-                fileName: `${egu.guid()}.jpeg`
+                fileName: `${tempName}.jpeg`
             },
             isSuccess: true,
             resultMsg: "执行成功！"
