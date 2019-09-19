@@ -11,7 +11,7 @@ const app = new Koa()
 app.use(bodyParser())
 app.use(stat(path.resolve(__dirname, "../static/")));
 
-app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+app.use(morgan('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
 app.use(async (ctx, next) => {
     try {

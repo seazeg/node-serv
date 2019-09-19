@@ -14,7 +14,7 @@
     "exec_mode": "cluster",
     "env": {
         "NODE_ENV": "dev",
-        "PORT": 3009,
+        "PORT": 3000,
         "PROJECT_PATH": "/Users/geng/Project/Person/node-work/src"
     }
 }

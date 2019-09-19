@@ -28,12 +28,12 @@ exports.formatter = function (options) {
         if (showMeta) {
             return `${colorStr}${message} stack: ${metaStr}`;
         }
-        return `${colorStr}${message}`;
+        return ` ${colorStr}${message}`;
     }
     if (showMeta) {
         return `${formatted}${message} stack: ${metaStr}`;
     }
-    return `${formatted}${message}`;
+    return ` ${formatted}${message}`;
 };
 
 exports.baseConf = {

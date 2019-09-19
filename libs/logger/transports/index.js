@@ -22,7 +22,7 @@ exports.transportConsole = new winston.transports.Console({
 exports.debugTransport = new winston.transports.DailyRotateFile(Object.assign({
     name: 'full',
     filename: 'debug-%DATE%.log',
-    level: 'info',
+    level: 'debug',
     handleExceptions: true
 }, baseConf));
 
