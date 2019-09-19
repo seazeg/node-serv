@@ -1,15 +1,17 @@
 const puppeteer = require('puppeteer');
+const path = require('path')
 const devices = require('./DeviceDescriptors')
 const config = require('./config.json')
 const egu = require('eg-utils')
 const chalk = require('chalk')
+const dirExists = require('./utils')
 const log = console.log;
-const resolve = file => require('path').resolve(__dirname, file)
+const resolve = file => path.resolve(__dirname, file)
 
 module.exports = async function run({
     hostName,
     devic = '14PC',
-    storagePath = resolve('./build')
+    storagePath = resolve('../../screenshot/')
 } = {}) {
     try {
         log(chalk.yellow("正在获取页面信息.."))
@@ -27,7 +29,8 @@ module.exports = async function run({
         })
         await autoScroll(page);
         log(chalk.yellow("开始截图.."))
-        let tempName = egu.guid()
+        dirExists(storagePath)
+        let tempName = egu.guid();
         await page.screenshot({
             path: `${storagePath}/${tempName}.jpeg`,
             quality: 100,
@@ -76,3 +79,4 @@ async function autoScroll(page) {
         })
     });
 }
+

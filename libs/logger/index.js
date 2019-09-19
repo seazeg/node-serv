@@ -1,17 +1,17 @@
-const {defaultLogger} = require('./module/default')
+const {logger} = require('./module/default')
 const {serviceLogger} = require('./module/service')
 const {daoLogger} = require('./module/dao')
 
 module.exports = {
-    defaultLogger: defaultLogger,
+    logger: logger,
     serviceLogger: serviceLogger,
     daoLogger: daoLogger
 }
 
-// defaultLogger('testDefault1').debug('a', 'b', 'c', 'd');
-// defaultLogger('testDefault2').info('a', 'b', 'c', 'd');
-// defaultLogger('testDefault3').warn('a', 'b', 'c', 'd');
-// defaultLogger('testDefault4').error('a', 'b', 'c', 'd');
+// logger('testDefault1').debug('a', 'b', 'c', 'd');
+// logger('testDefault2').info('a', 'b', 'c', 'd');
+// logger('testDefault3').warn('a', 'b', 'c', 'd');
+// logger('testDefault4').error('a', 'b', 'c', 'd');
 
 // serviceLogger('testService1').debug('a', 'b', 'c', 'd');
 // serviceLogger('testService2').info('a', 'b', 'c', 'd');

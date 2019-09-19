@@ -1,17 +1,17 @@
 'use strict';
 const pm2 = require('pm2')
-const {defaultLogger} = require('../libs/logger')
+const {serviceLogger} = require('../libs/logger')
 
 module.exports = (program) => {
     pm2.connect(function (err) {
         if (err) {
-            logger.error(err)
+            serviceLogger('cmd:deleted').error(err)
             process.exit(2)
         }
         pm2.delete(program.process || 'all', function (err, apps) {
             pm2.disconnect();
-            if (err) logger.error(err)
+            if (err) serviceLogger('cmd:deleted').error(err)
         })
-        defaultLogger().info(`The process whose name or ID is ${program.process||'all'} has deleted`)
+        serviceLogger('cmd:deleted').info(`The process whose name or ID is ${program.process||'all'} has deleted`)
     })
 }

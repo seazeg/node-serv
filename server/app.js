@@ -4,10 +4,8 @@ const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const stat = require("koa-static");
 const morgan = require('koa-morgan')
-const {
-    router,
-    config
-} = require('./api')
+const { router , config } = require('./api')
+const { serviceLogger } = require('../libs/logger')
 const app = new Koa()
 
 app.use(bodyParser())
@@ -18,12 +16,12 @@ app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
 app.use(async (ctx, next) => {
     try {
         await next()
-        console.log(router);
         if (ctx.status === 404) {
             ctx.body = 404
+            serviceLogger('server:app').warn('No page found and jump to 404')
         }
     } catch (err) {
-        // handle error
+        serviceLogger('server:app').error(err)
     }
 })
 

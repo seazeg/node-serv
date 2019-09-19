@@ -1,8 +1,7 @@
 'use strict';
 const router = require("koa-router")()
 const walk = require('walk')
-// const logger = require('../logger')
-
+const { serviceLogger } = require('../libs/logger')
 const application = process.env.NODE_ENV == 'pro' ? '/nodeservice' : ''
 router.prefix(application)
 
@@ -10,7 +9,7 @@ router.prefix(application)
 router.all('*', async (ctx, next) => {
     try {
         await next();
-        console.log('开启前置');
+        serviceLogger('server:api').info('服务前置拦截开启')
         //todo
     } catch (e) {
         ctx.throw(500, e);
@@ -18,9 +17,10 @@ router.all('*', async (ctx, next) => {
 });
 
 router.get('/', async (ctx, next) => {
-    ctx.type = 'html';
+    ctx.type = 'html'
     // ctx.body = await fs.createReadStream(resolve('../index.html'), 'utf-8');
     ctx.body = '服务启动'
+    serviceLogger('server:api').info('服务启动')
 })
 
 module.exports = {
@@ -41,17 +41,20 @@ module.exports = {
                 next()
             }
         });
-        walker.on('errors', function (root, nodeStatsArray, next) {
-            // logger.error(nodeStatsArray)
+        walker.on('errors', function (root, stat, next) {
+            serviceLogger('server:api').error(`[errors] ${stat.error}`)
             next();
         });
-        walker.on('nodeError', function (root, nodeStatsArray, next) {
-            // logger.error(nodeStatsArray)
+        walker.on('nodeError', function (root, stat, next) {
+            serviceLogger('server:api').error(`[nodeError] ${stat.error}`)
             next();
         });
-        walker.on('directoryError', function (root, nodeStatsArray, next) {
-            // logger.error(nodeStatsArray)
+        walker.on('directoryError', function (root, stat, next) {
+            serviceLogger('server:api').error(`[directoryError] ${stat.error}`)
             next();
+        });
+        walker.on("end", function () {
+            serviceLogger('server:api').info(`Service registration success .`)
         });
     }
 }

@@ -15,7 +15,7 @@ winston.loggers.add('default', {
 
 const defaultLog = winston.loggers.get('default');
 
-exports.defaultLogger = (module) => {
+exports.logger = (module) => {
     return {
         debug: (...args) => {
             const meta = {
