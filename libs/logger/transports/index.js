@@ -6,7 +6,6 @@ const {
     timestampFormatter
 } = require('./conf')
 require('winston-daily-rotate-file');
-const resolve = file => require('path').resolve(__dirname, file)
 
 
 exports.transportConsole = new winston.transports.Console({

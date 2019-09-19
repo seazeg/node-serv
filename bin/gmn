@@ -20,7 +20,7 @@ program
     .description('启动服务')
     .alias('st')
     .action(() => {
-        require('../lib/command/start')(program)
+        require('../libs/command/start')(program)
     })
 
 program
@@ -28,7 +28,7 @@ program
     .description('进程停止')
     .alias('sp')
     .action(() => {
-        require('../lib/command/stop')(program)
+        require('../libs/command/stop')(program)
     })
 
 program
@@ -36,7 +36,7 @@ program
     .description('进程重启')
     .alias('re')
     .action(() => {
-        require('../lib/command/restart')(program)
+        require('../libs/command/restart')(program)
     })
 
 program
@@ -44,7 +44,7 @@ program
     .description('进程清除')
     .alias('del')
     .action(() => {
-        require('../lib/command/delete')(program)
+        require('../libs/command/delete')(program)
     })
 
 program
@@ -52,7 +52,7 @@ program
     .description('显示打印日志')
     .alias('lg')
     .action(() => {
-        require('../lib/command/logs')(program)
+        require('../libs/command/logs')(program)
     })
 
 program.parse(process.argv)

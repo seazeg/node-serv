@@ -7,10 +7,8 @@ const log = console.log;
 const {
   serviceLogger
 } = require('../logger')
-const {baseConf} = require('../logger/transports/conf')
 
 module.exports = (program) => {
-  baseConf.filename = '/Users/geng/Project/Person/node-work/logs/app/%DATE%'
   pm2.connect(function (err) {
     if (err) {
       serviceLogger('cmd:start').error(err)
@@ -31,6 +29,7 @@ module.exports = (program) => {
       if (err) serviceLogger('cmd:start').error(err)
     });
 
+    console.log(process.cwd() );
     // pm2.describe('dev-server');
 
     log(chalk.green(`
@@ -45,4 +44,5 @@ module.exports = (program) => {
     log(chalk.green(`Visit http://localhost:${config.env.PORT}`))
 
   });
+
 }

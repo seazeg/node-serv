@@ -1,7 +1,7 @@
 'use strict';
 const winston = require('winston');
 const moment = require('moment');
-const resolve = file => require('path').resolve(__dirname, file)
+// const resolve = file => require('path').resolve(__dirname, file)
 
 
 exports.timestampFormatter = () => {
@@ -44,5 +44,5 @@ exports.baseConf = {
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     prepend: true,
-    filename: resolve('../../../logs/apxxxsp/%DATE%')
+    dirname: require('path').resolve(process.cwd(), '../logs/app/%DATE%')
 }

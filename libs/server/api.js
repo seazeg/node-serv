@@ -34,7 +34,7 @@ module.exports = {
             let file = fileStats.name
             if (/(\.(js))$/.test(file)) {
                 const file_entity = require(`${root}/${file}`);
-                if (file.includes('index')) {            
+                if (file.includes('main')) {            
                     router.use(file_entity.routes(), file_entity.allowedMethods())
                 }
                 next()
