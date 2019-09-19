@@ -8,9 +8,9 @@ const program = require('commander')
 
 // 定义当前版本
 program
-    .version(require('../package').version)
+    .version(require('../package.json').version)
     .option('-c, --config <string>', '配置文件')
-    .option('-p, --procss <string>', '进程标识')
+    .option('-p, --process <string|number>', '进程标识')
 
 // 定义使用方法
 program.usage('<command>')
@@ -45,14 +45,6 @@ program
     .alias('del')
     .action(() => {
         require('../command/delete')(program)
-    })
-
-program
-    .command('view')
-    .description('进程信息')
-    .alias('vi')
-    .action(() => {
-        require('../command/view')(program)
     })
 
 program.parse(process.argv)

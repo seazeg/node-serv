@@ -1,6 +1,7 @@
 'use strict';
-const chalk = require('chalk')
-const log = console.log;
+const {
+  defaultLogger
+} = require('../libs/logger')
 const {
   app,
   config
@@ -9,7 +10,7 @@ const {
 const PORT = process.env.PORT || 3000
 config(process.env.PROJECT_PATH);
 app.listen(PORT, () => {
-  log(chalk.green(`Visit http://localhost:${PORT}`))
+  defaultLogger().info(`Visit http://localhost:${PORT}`)
 })
 
 

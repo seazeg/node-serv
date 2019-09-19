@@ -1,11 +1,10 @@
 const puppeteer = require('puppeteer');
-const path = require('path')
 const devices = require('./DeviceDescriptors')
 const config = require('./config.json')
 const egu = require('eg-utils')
 const chalk = require('chalk')
 const log = console.log;
-const resolve = file => path.resolve(__dirname, file)
+const resolve = file => require('path').resolve(__dirname, file)
 
 module.exports = async function run({
     hostName,

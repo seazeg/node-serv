@@ -4,25 +4,33 @@ const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
 const log = console.log;
+const {
+  defaultLogger
+} = require('../libs/logger')
 
 module.exports = (program) => {
   pm2.connect(function (err) {
     if (err) {
-      console.error(err);
-      process.exit(2);
+      defaultLogger().error(err)
+      process.exit(2)
     }
-    let config = JSON.parse(fs.readFileSync(path.resolve('../server/config/serv.config.json')), 'utf-8')
-
+    let config = {}
+    let opts = {
+      "apps": [{
+        "script": path.resolve(__dirname,"../server/serv.js"),
+      }]
+    }
     program.config ? config = JSON.parse(fs.readFileSync(path.resolve(program.config)), 'utf-8') : null
 
-    pm2.start(Object.assign({
-      'script': '../server/serv.js',
-      'watch': ['../server'],
-      'ignore_watch': ['../node_modules', '../logs', '../test']
-    }, config), function (err, apps) {
+    opts.apps = Object.assign(opts.apps[0], config)
+
+    pm2.start(opts, function (err, apps) {
       pm2.disconnect(); // Disconnects from PM2
-      if (err) log(chalk.red(err))
+      if (err) defaultLogger().error(err)
     });
+
+    pm2.describe('dev-server');
+
 
     log(chalk.green(`
   ███████╗██╗   ██╗ █████╗ ███╗   ██╗    ██████╗ 

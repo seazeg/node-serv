@@ -1,7 +1,9 @@
 'use strict';
 const router = require("koa-router")()
 const walk = require('walk')
-const application = process.env.ENV == 'pro' ? '/nodeservice' : ''
+// const logger = require('../logger')
+
+const application = process.env.NODE_ENV == 'pro' ? '/nodeservice' : ''
 router.prefix(application)
 
 //前置拦截器
@@ -40,15 +42,15 @@ module.exports = {
             }
         });
         walker.on('errors', function (root, nodeStatsArray, next) {
-            // console.log('错误！');
+            // logger.error(nodeStatsArray)
             next();
         });
         walker.on('nodeError', function (root, nodeStatsArray, next) {
-            // console.log('错误！');
+            // logger.error(nodeStatsArray)
             next();
         });
         walker.on('directoryError', function (root, nodeStatsArray, next) {
-            // console.log('错误！');
+            // logger.error(nodeStatsArray)
             next();
         });
     }
