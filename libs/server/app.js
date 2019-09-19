@@ -4,7 +4,7 @@ const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const stat = require("koa-static");
 const morgan = require('koa-morgan')
-const { router , config } = require('./api')
+const { router , config } = require('./service')
 const { serviceLogger } = require('../logger')
 const app = new Koa()
 
