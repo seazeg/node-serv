@@ -1,6 +1,6 @@
 'use strict';
 const pm2 = require('pm2')
-const {serviceLogger} = require('../../dist/logger')
+const {serviceLogger} = require('../../lib/logger')
 
 module.exports = (program) => {
     pm2.connect(function (err) {

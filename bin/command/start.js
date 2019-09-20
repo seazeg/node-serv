@@ -6,7 +6,7 @@ const chalk = require('chalk')
 const log = console.log;
 const {
   serviceLogger
-} = require('../../dist/logger')
+} = require('../../lib/logger')
 
 module.exports = (program) => {
   pm2.connect(function (err) {

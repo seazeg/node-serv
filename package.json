@@ -8,7 +8,7 @@
     "dev": "pm2 start serv.config.js --only dev-server --watch",
     "prod": "pm2 start serv.config.js --only prod-server --watch",
     "test": "jest",
-    "serv": "babel libs -d app/libs;babel src -d app/src"
+    "serv": "cd ..;cd app;npm run build;cd ..;cd gmn;babel src -d lib;node lib/server/serv.js"
   },
   "author": "Evan.G",
   "license": "ISC",
@@ -17,7 +17,6 @@
     "chalk": "^2.4.1",
     "commander": "^3.0.1",
     "del": "^5.1.0",
-    "eg-utils": "^1.1.52",
     "jest": "^24.9.0",
     "koa": "^2.8.1",
     "koa-bodyparser": "^4.2.1",
@@ -28,8 +27,6 @@
     "koa2-cors": "^2.0.6",
     "moment": "^2.24.0",
     "pm2": "^3.5.1",
-    "puppeteer": "^1.11.0",
-    "puppeteer-cluster": "^0.17.0",
     "request": "^2.88.0",
     "shelljs": "^0.8.3",
     "walk": "^2.3.14",
