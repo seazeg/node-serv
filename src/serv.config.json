@@ -9,7 +9,7 @@
     "max_restarts": 10,
     "max_memory_restart": "1M",
     "watch": false,
-    "merge_logs": false,
+    "merge_logs": true,
     "instances": 2,
     "exec_mode": "cluster",
     "env": {

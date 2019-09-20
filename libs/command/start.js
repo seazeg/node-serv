@@ -25,12 +25,9 @@ module.exports = (program) => {
     opts.apps = Object.assign(opts.apps[0], config)
 
     pm2.start(opts, function (err, apps) {
-      pm2.disconnect(); // Disconnects from PM2
+      pm2.disconnect(); 
       if (err) serviceLogger('cmd:start').error(err)
     });
-
-    console.log(process.cwd() );
-    // pm2.describe('dev-server');
 
     log(chalk.green(`
   ███████╗██╗   ██╗ █████╗ ███╗   ██╗    ██████╗ 
