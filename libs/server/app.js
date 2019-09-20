@@ -2,29 +2,33 @@
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 // const stat = require("koa-static");
+const cors = require("koa2-cors");
 const morgan = require('koa-morgan')
-const { router , config } = require('./service')
-const { serviceLogger } = require('../logger')
+const {
+    router,
+    config
+} = require('./service')
+const {
+    serviceLogger
+} = require('../logger')
 const app = new Koa()
 
-app.use(bodyParser())
-// app.use(stat(require('path').resolve(__dirname, "../../static/")));
-
-app.use(morgan('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
-
-app.use(async (ctx, next) => {
-    try {
-        await next()
-        if (ctx.status === 404) {
-            ctx.body = 404
-            serviceLogger('server:app').warn('No page found and jump to 404')
+app
+    .use(bodyParser())
+    .use(cors())
+    .use(morgan('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
+    .use(async (ctx, next) => {
+        try {
+            await next()
+            if (ctx.status === 404) {
+                ctx.body = 404
+                serviceLogger('server:app').warn('No page found and jump to 404')
+            }
+        } catch (err) {
+            serviceLogger('server:app').error(err)
         }
-    } catch (err) {
-        serviceLogger('server:app').error(err)
-    }
-})
-
-app.use(router.routes(), router.allowedMethods())
+    })
+    .use(router.routes(), router.allowedMethods())
 
 module.exports = {
     app: app,

@@ -1,7 +1,11 @@
 'use strict';
 const router = require("koa-router")()
 const walk = require('walk')
-const { serviceLogger } = require('../../logger')
+// const SwaggerRouter = require('koa-swagger-decorator')
+// const router = new SwaggerRouter();
+const {
+    serviceLogger
+} = require('../../logger')
 const interceptor = require('./interceptor')
 
 const application = process.env.NODE_ENV == 'pro' ? '/nodeservice' : ''
@@ -16,6 +20,12 @@ router.get('/', async (ctx, next) => {
     serviceLogger('server:service').info('服务启动')
 })
 
+
+// router.swagger({
+//     title: 'API V2 Server',
+//     description: 'API DOC',
+//     version: '1.0.0'
+// });
 
 module.exports = {
     router: router,
@@ -51,4 +61,13 @@ module.exports = {
             serviceLogger('server:service').info(`Service registration success `)
         });
     }
+
+    // config: router.mapDir(dir, {
+    //     // default: true. To recursively scan the dir to make router. If false, will not scan subroutes dir
+    //     // recursive: true,
+    //     // default: true, if true, you can call ctx.validatedBody[Query|Params] to get validated data.
+    //     // doValidation: true,
+    //     // default: [], paths to ignore while looking for decorators 
+    //     // ignore: ["**.spec.ts"],
+    // })
 }
