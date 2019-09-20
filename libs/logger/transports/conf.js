@@ -1,8 +1,6 @@
 'use strict';
 import { config } from 'winston';
 import moment from 'moment';
-// const resolve = file => require('path').resolve(__dirname, file)
-
 
 export function timestampFormatter() {
     return moment().format('YYYY-MM-DD HH:mm:ss.SSS');

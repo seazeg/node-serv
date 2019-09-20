@@ -26,6 +26,6 @@ app
     .use(router.routes(), router.allowedMethods())
 
 export {
-    app as app,
-    config as config
+    app,
+    config
 }

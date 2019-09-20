@@ -8,7 +8,8 @@
     "dev": "pm2 start serv.config.js --only dev-server --watch",
     "prod": "pm2 start serv.config.js --only prod-server --watch",
     "test": "jest",
-    "build": "babel libs -d dist"
+    "build": "babel src -d dist-src",
+    "serv": "babel libs -d dist;node dist/server/serv.js"
   },
   "author": "Evan.G",
   "license": "ISC",
@@ -38,5 +39,12 @@
   },
   "bin": {
     "gmn": "bin/gmn"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-import": "^1.12.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-preset-env": "^1.7.0"
   }
 }

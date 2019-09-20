@@ -3,9 +3,9 @@ import { serviceLogger } from './module/service'
 import { daoLogger } from './module/dao'
 
 export{
-    logger as logger,
-    serviceLogger as serviceLogger,
-    daoLogger as daoLogger
+    logger,
+    serviceLogger,
+    daoLogger
 }
 
 // logger('testDefault1').debug('a', 'b', 'c', 'd');
