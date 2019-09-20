@@ -55,6 +55,22 @@ program
         require('../libs/command/logs')(program)
     })
 
+program
+    .command('view')
+    .description('详细配置信息')
+    .alias('vi')
+    .action(() => {
+        require('../libs/command/view')(program)
+    })
+
+program
+    .command('monit')
+    .description('指标监控')
+    .alias('mo')
+    .action(() => {
+        require('../libs/command/monit')(program)
+    })
+
 program.parse(process.argv)
 
 if (!program.args.length) {
