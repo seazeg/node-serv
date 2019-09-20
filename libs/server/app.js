@@ -1,16 +1,11 @@
 'use strict';
-const Koa = require('koa')
-const bodyParser = require('koa-bodyparser')
+import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
 // const stat = require("koa-static");
-const cors = require("koa2-cors");
-const morgan = require('koa-morgan')
-const {
-    router,
-    config
-} = require('./service')
-const {
-    serviceLogger
-} = require('../logger')
+import cors from "koa2-cors";
+import morgan from 'koa-morgan';
+import { router, config } from './service';
+import { serviceLogger } from '../logger';
 const app = new Koa()
 
 app
@@ -30,7 +25,7 @@ app
     })
     .use(router.routes(), router.allowedMethods())
 
-module.exports = {
-    app: app,
-    config: config
+export {
+    app as app,
+    config as config
 }

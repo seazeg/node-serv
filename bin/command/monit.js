@@ -1,16 +1,13 @@
 'use strict';
 const pm2 = require('pm2')
-const {serviceLogger} = require('../logger')
+const {serviceLogger} = require('../../dist/logger')
 
 module.exports = (program) => {
     pm2.connect(function (err) {
         if (err) {
-            serviceLogger('cmd:describe').error(err)
+            serviceLogger('cmd:monit').error(err)
             process.exit(2);
         }
-        pm2.describe(program.process || 'all')
+        pm2.dashboard();
     })
 }
-
-
-

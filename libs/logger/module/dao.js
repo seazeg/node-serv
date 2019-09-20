@@ -1,12 +1,8 @@
 'use strict';
-const winston = require('winston');
-const {
-    transportConsole,
-    daoTransport,
-    debugTransport
-} = require('../transports')
+import { loggers } from 'winston';
+import { transportConsole, daoTransport, debugTransport } from '../transports';
 
-winston.loggers.add('dao', {
+loggers.add('dao', {
     transports: [
         transportConsole,
         daoTransport,
@@ -14,9 +10,9 @@ winston.loggers.add('dao', {
     ],
 });
 
-const daoLog = winston.loggers.get('dao');
+const daoLog = loggers.get('dao');
 
-exports.daoLogger = (module) => {
+export function daoLogger(module) {
     return {
         debug: (...args) => {
             const meta = {
@@ -47,4 +43,4 @@ exports.daoLogger = (module) => {
             daoLog.error.apply(daoLog, fullParams);
         }
     };
-};
+}

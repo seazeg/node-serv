@@ -1,14 +1,10 @@
 'use strict';
-const winston = require('winston');
-const {
-    formatter,
-    baseConf,
-    timestampFormatter
-} = require('./conf')
-require('winston-daily-rotate-file');
+import { transports } from 'winston';
+import { formatter, baseConf, timestampFormatter } from './conf';
+import 'winston-daily-rotate-file';
 
 
-exports.transportConsole = new winston.transports.Console({
+export const transportConsole = new transports.Console({
     json: false,
     prettyPrint: true,
     colorize: true,
@@ -19,20 +15,20 @@ exports.transportConsole = new winston.transports.Console({
     datePattern: 'YYYY-MM-DD'
 });
 
-exports.debugTransport = new winston.transports.DailyRotateFile(Object.assign({
+export const debugTransport = new transports.DailyRotateFile(Object.assign({
     name: 'full',
     filename: 'debug-%DATE%.log',
     level: 'debug',
     handleExceptions: true
 }, baseConf));
 
-exports.serviceTransport = new winston.transports.DailyRotateFile(Object.assign({
+export const serviceTransport = new transports.DailyRotateFile(Object.assign({
     name: 'service',
     filename: 'service-%DATE%.log',
     level: 'debug'
 }, baseConf));
 
-exports.daoTransport = new winston.transports.DailyRotateFile(Object.assign({
+export const daoTransport = new transports.DailyRotateFile(Object.assign({
     name: 'dao',
     filename: 'dao-%DATE%.log',
     level: 'debug'

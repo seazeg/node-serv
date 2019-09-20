@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "/Users/geng/Project/Person/node-work/babel-test/logs/app/%DATE%/.1d5cad977705010eae78ddf2e34e00f28bc7c86f-audit.json",
+    "files": [
+        {
+            "date": 1568961163719,
+            "name": "/Users/geng/Project/Person/node-work/babel-test/logs/app/2019-09-20/dao-2019-09-20.log",
+            "hash": "68926ee1528bb5892470cb36454cbad1"
+        }
+    ]
+}

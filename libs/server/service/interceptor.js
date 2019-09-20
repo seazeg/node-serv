@@ -1,6 +1,6 @@
 
 const router = require("koa-router")()
-const { serviceLogger } = require('../../logger')
+import { serviceLogger } from '../../logger';
 
 //前置拦截器
 router.all('*', async (ctx, next) => {
@@ -13,4 +13,4 @@ router.all('*', async (ctx, next) => {
     }
 });
 
-module.exports = router
+export default router

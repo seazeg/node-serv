@@ -1,11 +1,11 @@
-const {logger} = require('./module/default')
-const {serviceLogger} = require('./module/service')
-const {daoLogger} = require('./module/dao')
+import { logger } from './module/default'
+import { serviceLogger } from './module/service'
+import { daoLogger } from './module/dao'
 
-module.exports = {
-    logger: logger,
-    serviceLogger: serviceLogger,
-    daoLogger: daoLogger
+export{
+    logger as logger,
+    serviceLogger as serviceLogger,
+    daoLogger as daoLogger
 }
 
 // logger('testDefault1').debug('a', 'b', 'c', 'd');

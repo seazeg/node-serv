@@ -1,20 +1,17 @@
 'use strict';
-const winston = require('winston');
-const {
-    transportConsole,
-    debugTransport
-} = require('../transports')
+import { loggers } from 'winston';
+import { transportConsole, debugTransport } from '../transports';
 
-winston.loggers.add('default', {
+loggers.add('default', {
     transports: [
         transportConsole,
         debugTransport
     ],
 });
 
-const defaultLog = winston.loggers.get('default');
+const defaultLog = loggers.get('default');
 
-exports.logger = (module) => {
+export function logger(module) {
     return {
         debug: (...args) => {
             const meta = {
@@ -45,4 +42,4 @@ exports.logger = (module) => {
             defaultLog.error.apply(defaultLog, fullParams);
         }
     };
-};
+}

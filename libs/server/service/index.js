@@ -6,7 +6,7 @@ const walk = require('walk')
 const {
     serviceLogger
 } = require('../../logger')
-const interceptor = require('./interceptor')
+const interceptor = require('./interceptor').default
 
 const application = process.env.NODE_ENV == 'pro' ? '/nodeservice' : ''
 router.prefix(application)

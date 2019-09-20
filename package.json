@@ -7,7 +7,8 @@
     "start": "export PORT=3000 && node ./server/",
     "dev": "pm2 start serv.config.js --only dev-server --watch",
     "prod": "pm2 start serv.config.js --only prod-server --watch",
-    "test": "jest"
+    "test": "jest",
+    "build": "babel libs -d dist"
   },
   "author": "Evan.G",
   "license": "ISC",

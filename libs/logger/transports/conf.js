@@ -1,14 +1,14 @@
 'use strict';
-const winston = require('winston');
-const moment = require('moment');
+import { config } from 'winston';
+import moment from 'moment';
 // const resolve = file => require('path').resolve(__dirname, file)
 
 
-exports.timestampFormatter = () => {
+export function timestampFormatter() {
     return moment().format('YYYY-MM-DD HH:mm:ss.SSS');
-};
+}
 
-exports.formatter = function (options) {
+export function formatter (options) {
     const timestamp = options.timestamp();
     const level = options.level.toUpperCase();
     const message = options.message || '';
@@ -24,7 +24,7 @@ exports.formatter = function (options) {
     }
     const formatted = `[${timestamp}] [${level}] [${module}] - `;
     if (options.colorize) {
-        const colorStr = winston.config.colorize(options.level, formatted);
+        const colorStr = config.colorize(options.level, formatted);
         if (showMeta) {
             return `${colorStr}${message} stack: ${metaStr}`;
         }
@@ -34,13 +34,13 @@ exports.formatter = function (options) {
         return `${formatted}${message} stack: ${metaStr}`;
     }
     return ` ${formatted}${message}`;
-};
+}
 
-exports.baseConf = {
+export const baseConf = {
     json: false,
     maxSize: 1024 * 1024 * 10,
     maxFiles: '7d',
-    timestamp: this.timestampFormatter,
+    timestamp: timestampFormatter,
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     prepend: true,
