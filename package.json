@@ -8,8 +8,7 @@
     "dev": "pm2 start serv.config.js --only dev-server --watch",
     "prod": "pm2 start serv.config.js --only prod-server --watch",
     "test": "jest",
-    "build": "babel src -d dist-src",
-    "serv": "babel libs -d dist;node dist/server/serv.js"
+    "serv": "babel libs -d app/libs;babel src -d app/src"
   },
   "author": "Evan.G",
   "license": "ISC",
