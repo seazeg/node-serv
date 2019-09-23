@@ -1,5 +1,5 @@
 {
-  "name": "node-work",
+  "name": "g2m",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "dev": "pm2 start serv.config.js --only dev-server --watch",
     "prod": "pm2 start serv.config.js --only prod-server --watch",
     "test": "jest",
-    "serv": "cd ..;cd app;npm run build;cd ..;cd gmn;babel src -d lib;node lib/server/serv.js"
+    "serv": "cd ..;cd app;npm run build;cd ..;cd g2m;babel src -d lib;node lib/server/serv.js"
   },
   "author": "Evan.G",
   "license": "ISC",
@@ -34,7 +34,7 @@
     "winston-daily-rotate-file": "^3.10.0"
   },
   "bin": {
-    "gmn": "bin/gmn"
+    "g2m": "bin/g2m"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
