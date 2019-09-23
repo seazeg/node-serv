@@ -11,7 +11,6 @@ router.use(interceptor.routes())
 
 router.get('/', async (ctx, next) => {
     ctx.type = 'html'
-    // ctx.body = await fs.createReadStream(resolve('../index.html'), 'utf-8');
     ctx.body = '服务启动'
     serviceLogger('server:service').info('服务启动')
 })
@@ -22,6 +21,15 @@ router.swagger({
   version: '1.0.0',
   swaggerHtmlEndpoint: '/doc/swagger-html',
   swaggerJsonEndpoint: '/doc/swagger-json',
+  swaggerOptions: {
+    securityDefinitions: {
+      api_key: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'api_key',
+      },
+    },
+  }
 });
 
 function config(dir) {

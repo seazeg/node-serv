@@ -8,7 +8,6 @@ import { serviceLogger } from '../logger';
 import staticFiles from 'koa-static';
 const app = new Koa()
 
-
 app
     .use(bodyParser())
     .use(cors())
