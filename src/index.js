@@ -1,4 +1,5 @@
-import { request, summary, tags, query, body, prefix } from 'koa-swagger-decorator'
+import { request, summary, tags, query, body, prefix } from '../middleware'
+import { logger, serviceLogger, daoLogger } from './logger'
 
 export {
     request,
@@ -6,5 +7,8 @@ export {
     tags,
     query,
     body,
-    prefix
+    prefix,
+    logger,
+    serviceLogger,
+    daoLogger
 }

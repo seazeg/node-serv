@@ -1,5 +1,5 @@
 'use strict';
-import { SwaggerRouter } from 'koa-swagger-decorator';
+import { SwaggerRouter } from '../../../middleware';
 import { serviceLogger } from '../../logger';
 import interceptor from './interceptor';
 
@@ -17,16 +17,15 @@ router.get('/', async (ctx, next) => {
 })
 
 router.swagger({
-  title: 'API V2 Server',
+  title: 'Node App API',
   description: 'API DOC',
   version: '1.0.0',
-  swaggerHtmlEndpoint: '/swagger-html',
-  swaggerJsonEndpoint: '/swagger-json',
+  swaggerHtmlEndpoint: '/doc/swagger-html',
+  swaggerJsonEndpoint: '/doc/swagger-json',
 });
 
 function config(dir) {
    router.mapDir(dir)
-   console.log(router);
 }
 
 export  {
