@@ -14,12 +14,12 @@ module.exports = (program) => {
       serviceLogger('cmd:start').error(err)
       process.exit(2)
     }
-    let config = {}
-    let opts = {
-      "apps": [{
-        "script": path.resolve(__dirname, "../../dist/server/serv.js"),
-      }]
-    }
+    let config = {},
+      opts = {
+        "apps": [{
+          "script": path.resolve(__dirname, "../../lib/server/serv.js"),
+        }]
+      }
 
     program.config ? config = JSON.parse(fs.readFileSync(path.resolve(program.config)), 'utf-8') : null
 
@@ -35,8 +35,8 @@ module.exports = (program) => {
       ╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝
       `))
 
-      log(chalk.green(`Visit http://localhost:${config.env.PORT}`))
-      // pm2.disconnect();
+      serviceLogger('server:serv').info(`App is listening on ${config.env.PORT}`)
+      pm2.disconnect();
       if (err) serviceLogger('cmd:start').error(err)
     });
 
