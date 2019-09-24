@@ -13,7 +13,7 @@ const config = {
 }
  
 export default async function run({
-    hostName = 'www.casarte.com',
+    hostName,
     devic = '14PC',
     storagePath = resolve('../../../screenshot/')
 } = {}) {

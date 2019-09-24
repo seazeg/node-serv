@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "/Users/geng/Project/Person/node-work/app/logs/%DATE%/.d190fe2a9180d629fe11b5f2e4e413cc426be4ce-audit.json",
+    "files": [
+        {
+            "date": 1569327541833,
+            "name": "/Users/geng/Project/Person/node-work/app/logs/2019-09-24/service-2019-09-24.log",
+            "hash": "da272a8e7e103d01912078fc3974cff1"
+        }
+    ]
+}
