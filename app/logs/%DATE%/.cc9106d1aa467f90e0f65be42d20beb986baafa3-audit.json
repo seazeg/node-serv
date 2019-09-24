@@ -6,9 +6,9 @@
     "auditLog": "/Users/geng/Project/Person/node-work/app/logs/%DATE%/.cc9106d1aa467f90e0f65be42d20beb986baafa3-audit.json",
     "files": [
         {
-            "date": 1569327541831,
+            "date": 1569327692129,
             "name": "/Users/geng/Project/Person/node-work/app/logs/2019-09-24/debug-2019-09-24.log",
-            "hash": "d5ef34aec99caeb4151583dcb8b7febc"
+            "hash": "caee541c41856f1944a01fe5f4643c15"
         }
     ]
 }
