@@ -1,0 +1,34 @@
+{
+  "name": "node-work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel src -d dist;npm run dev",
+    "dev": "g2m start --config /Users/geng/Project/Person/node-work/app/config/serv.dev.config.json",
+    "prod": "g2m start --config /Users/geng/Project/Person/node-work/app/config/serv.pro.config.json",
+    "test": "jest",
+    "build": "babel src -d dist"
+  },
+  "author": "Evan.G",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "chalk": "^2.4.1",
+    "del": "^5.1.0",
+    "eg-utils": "^1.1.52",
+    "moment": "^2.24.0",
+    "puppeteer": "^1.11.0",
+    "puppeteer-cluster": "^0.17.0"
+  },
+  "bin": {
+    "g2m": "bin/g2m"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-import": "^1.12.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-preset-env": "^1.7.0"
+  }
+}
