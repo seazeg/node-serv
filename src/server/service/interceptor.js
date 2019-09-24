@@ -1,4 +1,3 @@
-
 import { SwaggerRouter } from '../../../middleware';
 import { serviceLogger } from '../../logger';
 const router = new SwaggerRouter();

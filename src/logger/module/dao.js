@@ -1,4 +1,3 @@
-'use strict';
 import { loggers } from 'winston';
 import { transportConsole, daoTransport, debugTransport } from '../transports';
 

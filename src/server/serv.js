@@ -1,4 +1,3 @@
-'use strict';
 import { app, config } from './app';
 import { serviceLogger } from '../logger';
 

@@ -1,4 +1,3 @@
-'use strict';
 import { SwaggerRouter } from '../../../middleware';
 import { serviceLogger } from '../../logger';
 import interceptor from './interceptor';

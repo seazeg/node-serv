@@ -1,4 +1,3 @@
-'use strict';
 import { transports } from 'winston';
 import { formatter, baseConf, timestampFormatter } from './conf';
 import 'winston-daily-rotate-file';

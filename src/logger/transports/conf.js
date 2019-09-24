@@ -1,4 +1,3 @@
-'use strict';
 import { config } from 'winston';
 import moment from 'moment';
 
