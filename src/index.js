@@ -1,5 +1,6 @@
 import { request, summary, tags, query, body, prefix } from '../middleware'
 import { logger, serviceLogger, daoLogger } from './logger'
+import interceptor from './server/service/interceptor'
 
 export {
     request,
@@ -10,5 +11,6 @@ export {
     prefix,
     logger,
     serviceLogger,
-    daoLogger
+    daoLogger,
+    interceptor
 }

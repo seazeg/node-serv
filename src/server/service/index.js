@@ -6,7 +6,7 @@ const application = process.env.NODE_ENV == 'pro' ? '/nodeservice' : ''
 const koaRouterOpts = { prefix: application };
 const router = new SwaggerRouter(koaRouterOpts);
 
-router.use(interceptor.routes())
+router.use(interceptor().routes())
 
 router.get('/', async (ctx, next) => {
     ctx.type = 'html'

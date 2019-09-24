@@ -6,3 +6,6 @@ config(process.env.PROJECT_PATH || '/Users/geng/Project/Person/node-work/app/dis
 app.listen(PORT, () => {
   serviceLogger('server:serv').info(`App is listening on ${PORT}`)
 })  
+app.on('error', (err, ctx) => {
+  serviceLogger('server:serv').error(`server error`,err)
+});
