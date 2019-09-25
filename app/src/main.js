@@ -14,7 +14,7 @@ export default class Nodeapp {
      * @param {String} storagePath 输出路径
      * @returns 
      */
-    @request('get', '/screenshot')
+    @request('post', '/screenshot')
     @summary('截图功能')
     @tag
     @query({
@@ -32,4 +32,5 @@ export default class Nodeapp {
         })
       });
     }
+    
 }
