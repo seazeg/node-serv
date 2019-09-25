@@ -20,7 +20,7 @@ module.exports = (program) => {
           "script": path.resolve(__dirname, "../../lib/server/serv.js"),
         }]
       }
-
+      
     program.config ? config = JSON.parse(fs.readFileSync(path.resolve(program.config)), 'utf-8') : null
 
     opts.apps = Object.assign(opts.apps[0], config)

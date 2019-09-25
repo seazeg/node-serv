@@ -5,7 +5,7 @@ import { blue } from 'chalk';
 const tag = tags(['Node应用']);
 
 @prefix('/api')
-export default class Nodeapp {
+export default class NodeApp {
 
     /**
      * @description 截图功能

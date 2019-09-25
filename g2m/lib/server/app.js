@@ -41,19 +41,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const app = new _koa2.default();
 
-const queue = [];
-app.use(async (ctx, next) => {
-    setTimeout(() => {
-        queue.shift()();
-    }, 3000);
-    await delay();
-});
-function delay() {
-    return new Promise((resolve, reject) => {
-        queue.push(resolve);
-    });
-}
-
 app.use(_koa2Ratelimit2.default.RateLimit.middleware({
     interval: 5000, // 15 minutes = 15*60*1000
     max: 100 // limit each IP to 100 requests per interval

@@ -14,10 +14,10 @@ const router = new _middleware.SwaggerRouter();
 const interceptor = callback => {
     router.all('*', async (ctx, next) => {
         try {
-            await next();
             if (callback) callback();
             (0, _logger.serviceLogger)('server:interceptor').info('接口前置拦截开启');
             //todo
+            await next();
         } catch (e) {
             ctx.throw(500, e);
         }

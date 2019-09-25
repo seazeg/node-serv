@@ -55,5 +55,5 @@ const baseConf = exports.baseConf = {
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     prepend: true,
-    dirname: require('path').resolve(process.cwd(), '../logs/%DATE%')
+    dirname: require('path').resolve(__dirname, '../../../../logs/%DATE%')
 };
