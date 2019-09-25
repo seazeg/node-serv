@@ -13,6 +13,7 @@ const run = (conf) => {
   });
 }
 
+import './test'
 if (process.env.PROJECT_PATH) run();
 
 export default run
