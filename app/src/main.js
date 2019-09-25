@@ -24,8 +24,8 @@ export default class Nodeapp {
     })
     async screenshot(ctx) {
       return new Promise(function (resolve, reject) {
-        const { hostName,devic,storagePath } = ctx.validatedQuery;
-        daoLogger('app:screenshot').info('获取参数：', blue(JSON.stringify({ hostName,devic,storagePath })))
+        const { hostName, devic, storagePath } = ctx.validatedQuery;
+        daoLogger('app:screenshot').info('获取参数：', blue(JSON.stringify({ hostName, devic, storagePath })))
         run({hostName,devic,storagePath}).then(function (result) {
             ctx.body = result
             resolve();

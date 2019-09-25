@@ -41,12 +41,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const app = new _koa2.default();
 
-const limiter = _koa2Ratelimit2.default.RateLimit.middleware({
+const queue = [];
+app.use(async (ctx, next) => {
+    setTimeout(() => {
+        queue.shift()();
+    }, 3000);
+    await delay();
+});
+function delay() {
+    return new Promise((resolve, reject) => {
+        queue.push(resolve);
+    });
+}
+
+app.use(_koa2Ratelimit2.default.RateLimit.middleware({
     interval: 5000, // 15 minutes = 15*60*1000
     max: 100 // limit each IP to 100 requests per interval
-});
-
-app.use(limiter).use((0, _koaBodyparser2.default)()).use((0, _koa2Cors2.default)()).use((0, _koaFavicon2.default)(__dirname + '../../../static/favicon.ico')).use((0, _koaStatic2.default)(require('path').join(__dirname + '../../../static'))).use((0, _koaMorgan2.default)('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms')).use(async (ctx, next) => {
+})).use((0, _koaBodyparser2.default)()).use((0, _koa2Cors2.default)()).use((0, _koaFavicon2.default)(__dirname + '../../../static/favicon.ico')).use((0, _koaStatic2.default)(require('path').join(__dirname + '../../../static'))).use((0, _koaMorgan2.default)('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms')).use(async (ctx, next) => {
     try {
         await next();
         if (ctx.status === 404) {

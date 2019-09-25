@@ -9,6 +9,19 @@ import staticFiles from 'koa-static';
 import limit from 'koa2-ratelimit' 
 const app = new Koa()
 
+// const queue = [];
+// app.use(async (ctx, next) => {
+//  setTimeout(() => {
+//   queue.shift()();
+//  }, 3000);
+//  await delay();
+// });
+// function delay() {
+//  return new Promise((resolve, reject) => {
+//   queue.push(resolve);
+//  });
+// }
+
 app 
     .use(limit.RateLimit.middleware({
         interval: 5000, // 15 minutes = 15*60*1000
