@@ -8,7 +8,6 @@ const run = (conf = {
   LOGGER_PATH: require('path').resolve(__dirname, '../../../logs/%DATE%')
 }) => {
   appConfig(process.env.PROJECT_PATH || conf.PROJECT_PATH || '/Users/geng/Project/Person/node-work/app/dist');
-
   loggerConfig({
     dirname: process.env.LOGGER_PATH || conf.LOGGER_PATH
   })
@@ -21,10 +20,5 @@ const run = (conf = {
   });
 }
 
-
-
 if (process.env.PROJECT_PATH) run();
-run()
-
-
 export default run
