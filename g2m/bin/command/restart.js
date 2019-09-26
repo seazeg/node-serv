@@ -12,6 +12,6 @@ module.exports = (program) => {
             pm2.disconnect();
             if (err) log.error(err)
         })
-        log.info(`The process whose name or ID is ${program.process||'all'} has restart`)
+        log.info(`Successful >> The process whose name or ID is ${program.process||'all'} has restart`)
     })
 }

@@ -1,6 +1,5 @@
 'use strict';
 const pm2 = require('pm2')
-const chalk = require('chalk')
 const log = require('../../utils/console')
 
 module.exports = (program) => {
@@ -13,6 +12,6 @@ module.exports = (program) => {
             pm2.disconnect();
             if (err) log.error(err)
         })
-        log.info(`The process whose name or ID is ${program.process||'all'} has deleted`)
+        log.info(`Successful >> The process whose name or ID is ${program.process||'all'} has deleted`)
     })
 }
