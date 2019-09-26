@@ -3,17 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.serviceConfig = undefined;
 exports.serviceLogger = serviceLogger;
 
 var _winston = require('winston');
 
 var _transports = require('../transports');
 
-_winston.loggers.add('service', {
-    transports: [_transports.transportConsole, _transports.serviceTransport, _transports.debugTransport]
-});
+let serviceLog = {};
 
-const serviceLog = _winston.loggers.get('service');
+const serviceConfig = exports.serviceConfig = conf => {
+    _winston.loggers.add('service', {
+        transports: [(0, _transports.transport)(conf).transportConsole, (0, _transports.transport)(conf).serviceTransport, (0, _transports.transport)(conf).debugTransport]
+    });
+    serviceLog = _winston.loggers.get('service');
+};
 
 function serviceLogger(module) {
     return {

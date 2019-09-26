@@ -1,15 +1,18 @@
 import { loggers } from 'winston';
-import { transportConsole, daoTransport, debugTransport } from '../transports';
+import { transport } from '../transports';
 
-loggers.add('dao', {
-    transports: [
-        transportConsole,
-        daoTransport,
-        debugTransport
-    ],
-});
+let daoLog = {}
 
-const daoLog = loggers.get('dao');
+export const daoConfig = (conf) => {
+    loggers.add('dao', {
+        transports: [
+            transport(conf).transportConsole,
+            transport(conf).serviceTransport,
+            transport(conf).debugTransport
+        ],
+    });
+    daoLog = loggers.get('dao');
+}
 
 export function daoLogger(module) {
     return {

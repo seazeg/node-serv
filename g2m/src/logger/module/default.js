@@ -1,14 +1,18 @@
 import { loggers } from 'winston';
-import { transportConsole, debugTransport } from '../transports';
+import { transport } from '../transports';
 
-loggers.add('default', {
-    transports: [
-        transportConsole,
-        debugTransport
-    ],
-});
+let defaultLog = {}
 
-const defaultLog = loggers.get('default');
+export const defaultConfig = (conf) => {
+    loggers.add('default', {
+        transports: [
+            transport(conf).transportConsole,
+            transport(conf).serviceTransport,
+            transport(conf).debugTransport
+        ],
+    });
+    defaultLog = loggers.get('default');
+}
 
 export function logger(module) {
     return {

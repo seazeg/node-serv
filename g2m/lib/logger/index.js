@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.daoLogger = exports.serviceLogger = exports.logger = undefined;
+exports.loggerConfig = exports.daoLogger = exports.serviceLogger = exports.logger = undefined;
 
 var _default = require('./module/default');
 
@@ -11,9 +11,12 @@ var _service = require('./module/service');
 
 var _dao = require('./module/dao');
 
+var _module = require('./module/');
+
 exports.logger = _default.logger;
 exports.serviceLogger = _service.serviceLogger;
 exports.daoLogger = _dao.daoLogger;
+exports.loggerConfig = _module.loggerConfig;
 
 // logger('testDefault1').debug('a', 'b', 'c', 'd');
 // logger('testDefault2').info('a', 'b', 'c', 'd');

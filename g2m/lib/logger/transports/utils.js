@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.baseConf = undefined;
 exports.timestampFormatter = timestampFormatter;
 exports.formatter = formatter;
 
@@ -46,14 +45,3 @@ function formatter(options) {
     }
     return ` ${formatted}${message}`;
 }
-
-const baseConf = exports.baseConf = {
-    json: false,
-    maxSize: 1024 * 1024 * 10,
-    maxFiles: '7d',
-    timestamp: timestampFormatter,
-    datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,
-    prepend: true,
-    dirname: require('path').resolve(__dirname, '../../../../logs/%DATE%')
-};

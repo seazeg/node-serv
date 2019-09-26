@@ -3,17 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.daoConfig = undefined;
 exports.daoLogger = daoLogger;
 
 var _winston = require('winston');
 
 var _transports = require('../transports');
 
-_winston.loggers.add('dao', {
-    transports: [_transports.transportConsole, _transports.daoTransport, _transports.debugTransport]
-});
+let daoLog = {};
 
-const daoLog = _winston.loggers.get('dao');
+const daoConfig = exports.daoConfig = conf => {
+    _winston.loggers.add('dao', {
+        transports: [(0, _transports.transport)(conf).transportConsole, (0, _transports.transport)(conf).serviceTransport, (0, _transports.transport)(conf).debugTransport]
+    });
+    daoLog = _winston.loggers.get('dao');
+};
 
 function daoLogger(module) {
     return {

@@ -22,6 +22,7 @@
     "env": {
         "NODE_ENV": "dev",
         "PORT": 3009,
-        "PROJECT_PATH": "/Users/geng/Project/Person/node-work/app/dist"
+        "PROJECT_PATH": "/Users/geng/Project/Person/node-work/app/dist",
+        "LOGGER_PATH": "/Users/geng/Project/Person/node-work/app/logs/%DATE%"
     }
 }

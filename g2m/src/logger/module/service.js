@@ -1,15 +1,18 @@
 import { loggers } from 'winston';
-import { transportConsole, serviceTransport, debugTransport } from '../transports';
+import { transport } from '../transports';
 
-loggers.add('service', {
-    transports: [
-        transportConsole,
-        serviceTransport,
-        debugTransport
-    ],
-});
+let serviceLog = {}
 
-const serviceLog = loggers.get('service');
+export const serviceConfig = (conf) => {
+    loggers.add('service', {
+        transports: [
+            transport(conf).transportConsole,
+            transport(conf).serviceTransport,
+            transport(conf).debugTransport
+        ],
+    });
+    serviceLog = loggers.get('service');
+}
 
 export function serviceLogger(module) {
     return {

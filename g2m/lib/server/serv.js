@@ -10,8 +10,16 @@ var _logger = require('../logger');
 
 const PORT = process.env.PORT || 3000;
 
-const run = conf => {
-  (0, _app.config)(process.env.PROJECT_PATH || conf.project_path || '/Users/geng/Project/Person/node-work/app/dist');
+const run = (conf = {
+  PROJECT_PATH: '',
+  LOGGER_PATH: require('path').resolve(__dirname, '../../../logs/%DATE%')
+}) => {
+  (0, _app.config)(process.env.PROJECT_PATH || conf.PROJECT_PATH || '/Users/geng/Project/Person/node-work/app/dist');
+
+  (0, _logger.loggerConfig)({
+    dirname: process.env.LOGGER_PATH || conf.LOGGER_PATH
+  });
+
   _app.app.listen(PORT, () => {
     (0, _logger.serviceLogger)('server:serv').info(`App is listening on ${PORT}`);
   });
@@ -21,5 +29,6 @@ const run = conf => {
 };
 
 if (process.env.PROJECT_PATH) run();
+run();
 
 exports.default = run;

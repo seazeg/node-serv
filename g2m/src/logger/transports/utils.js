@@ -33,13 +33,4 @@ export function formatter (options) {
     return ` ${formatted}${message}`;
 }
 
-export const baseConf = {
-    json: false,
-    maxSize: 1024 * 1024 * 10,
-    maxFiles: '7d',
-    timestamp: timestampFormatter,
-    datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,
-    prepend: true,
-    dirname: require('path').resolve(__dirname, '../../../../logs/%DATE%')
-}
+

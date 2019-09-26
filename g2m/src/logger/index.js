@@ -1,11 +1,13 @@
 import { logger } from './module/default'
 import { serviceLogger } from './module/service'
 import { daoLogger } from './module/dao'
+import { loggerConfig } from './module/'
 
 export{
     logger,
     serviceLogger,
-    daoLogger
+    daoLogger,
+    loggerConfig
 }
 
 // logger('testDefault1').debug('a', 'b', 'c', 'd');

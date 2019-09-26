@@ -4,14 +4,11 @@ const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
 const log = console.log;
-const {
-  serviceLogger
-} = require('../../lib/logger')
 
 module.exports = (program) => {
   pm2.connect(function (err) {
     if (err) {
-      serviceLogger('cmd:start').error(err)
+      log(chalk.red(err))
       process.exit(2)
     }
     let config = {},
@@ -27,24 +24,24 @@ module.exports = (program) => {
 
     pm2.start(opts, function (err, apps) {
       log(chalk.green(`
-       ██████╗ ██████╗ ███╗   ███╗
-      ██╔════╝ ╚════██╗████╗ ████║
-      ██║  ███╗ █████╔╝██╔████╔██║
-      ██║   ██║██╔═══╝ ██║╚██╔╝██║
-      ╚██████╔╝███████╗██║ ╚═╝ ██║
-       ╚═════╝ ╚══════╝╚═╝     ╚═╝
-                                  
-      ███████╗██╗   ██╗ █████╗ ███╗   ██╗    ██████╗ 
-      ██╔════╝██║   ██║██╔══██╗████╗  ██║   ██╔════╝ 
-      █████╗  ██║   ██║███████║██╔██╗ ██║   ██║  ███╗
-      ██╔══╝  ╚██╗ ██╔╝██╔══██║██║╚██╗██║   ██║   ██║
-      ███████╗ ╚████╔╝ ██║  ██║██║ ╚████║██╗╚██████╔╝
-      ╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝ 
+     ██████╗ ██████╗ ███╗   ███╗
+    ██╔════╝ ╚════██╗████╗ ████║
+    ██║  ███╗ █████╔╝██╔████╔██║
+    ██║   ██║██╔═══╝ ██║╚██╔╝██║
+    ╚██████╔╝███████╗██║ ╚═╝ ██║
+     ╚═════╝ ╚══════╝╚═╝     ╚═╝
+                                
+    ███████╗██╗   ██╗ █████╗ ███╗   ██╗    ██████╗ 
+    ██╔════╝██║   ██║██╔══██╗████╗  ██║   ██╔════╝ 
+    █████╗  ██║   ██║███████║██╔██╗ ██║   ██║  ███╗
+    ██╔══╝  ╚██╗ ██╔╝██╔══██║██║╚██╗██║   ██║   ██║
+    ███████╗ ╚████╔╝ ██║  ██║██║ ╚████║██╗╚██████╔╝
+    ╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝ 
       `))
 
-      serviceLogger('server:serv').info(`App is listening on ${config.env.PORT}`)
+      log(chalk.green(`::App is listening on ${config.env.PORT}::\n`))
       pm2.disconnect();
-      if (err) serviceLogger('cmd:start').error(err)
+      if (err) log(chalk.red(err))
     });
 
   });

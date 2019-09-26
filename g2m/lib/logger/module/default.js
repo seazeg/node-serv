@@ -3,17 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.defaultConfig = undefined;
 exports.logger = logger;
 
 var _winston = require('winston');
 
 var _transports = require('../transports');
 
-_winston.loggers.add('default', {
-    transports: [_transports.transportConsole, _transports.debugTransport]
-});
+let defaultLog = {};
 
-const defaultLog = _winston.loggers.get('default');
+const defaultConfig = exports.defaultConfig = conf => {
+    _winston.loggers.add('default', {
+        transports: [(0, _transports.transport)(conf).transportConsole, (0, _transports.transport)(conf).serviceTransport, (0, _transports.transport)(conf).debugTransport]
+    });
+    defaultLog = _winston.loggers.get('default');
+};
 
 function logger(module) {
     return {
