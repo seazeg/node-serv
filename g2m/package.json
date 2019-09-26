@@ -10,12 +10,12 @@
     "test": "jest",
     "serv": "cd ..;cd app;npm run build;cd ..;cd g2m;babel src -d lib;node lib/server/serv.js",
     "build": "babel src -d lib",
-    "db":"babel src -d lib;cd lib/database;node model.js"
+    "db": "babel src -d lib;cd lib/database;node model.js"
   },
   "author": "Evan.G",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^2.4.1",
+    "colors": "^1.4.0",
     "commander": "^3.0.1",
     "del": "^5.1.0",
     "is-type-of": "^1.2.1",
