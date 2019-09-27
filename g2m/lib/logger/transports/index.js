@@ -7,7 +7,7 @@ exports.transport = undefined;
 
 var _winston = require('winston');
 
-var _utils = require('./utils');
+var _formatter = require('./formatter');
 
 require('winston-daily-rotate-file');
 
@@ -16,7 +16,7 @@ const transport = exports.transport = conf => {
         json: conf.json || false,
         maxSize: conf.maxSize || 1024 * 1024 * 10,
         maxFiles: conf.maxFiles || '7d',
-        timestamp: _utils.timestampFormatter,
+        timestamp: _formatter.timestampFormatter,
         datePattern: conf.datePattern || 'YYYY-MM-DD',
         zippedArchive: conf.zippedArchive || true,
         prepend: conf.prepend || true,
@@ -27,8 +27,8 @@ const transport = exports.transport = conf => {
         prettyPrint: true,
         colorize: true,
         level: 'info',
-        timestamp: _utils.timestampFormatter,
-        formatter: _utils.formatter,
+        timestamp: _formatter.timestampFormatter,
+        formatter: _formatter.formatter,
         handleExceptions: true,
         datePattern: 'YYYY-MM-DD'
     });

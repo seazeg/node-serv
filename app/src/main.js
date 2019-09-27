@@ -1,7 +1,8 @@
-import { request, summary, tags, query, body, prefix ,daoLogger} from '../../g2m/lib'
+import { decorators, daoLogger}  from '../../g2m/lib'
 import run from './screenshot/core';
 import { blue } from 'chalk';
 
+const {request, summary, tags, query, body, prefix} = decorators
 const tag = tags(['Node应用']);
 
 @prefix('/api')

@@ -25,7 +25,7 @@ var _koaFavicon = require('koa-favicon');
 
 var _koaFavicon2 = _interopRequireDefault(_koaFavicon);
 
-var _service = require('./service');
+var _router = require('../router');
 
 var _logger = require('../logger');
 
@@ -54,7 +54,7 @@ app.use(_koa2Ratelimit2.default.RateLimit.middleware({
     } catch (err) {
         (0, _logger.serviceLogger)('server:app').error(err);
     }
-}).use(_service.router.routes(), _service.router.allowedMethods());
+}).use(_router.router.routes(), _router.router.allowedMethods());
 
 exports.app = app;
-exports.config = _service.config;
+exports.config = _router.config;

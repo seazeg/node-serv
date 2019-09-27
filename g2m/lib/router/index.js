@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.config = exports.router = undefined;
 
-var _middleware = require('../../../middleware');
+var _swagger = require('../../middleware/swagger');
 
-var _logger = require('../../logger');
+var _logger = require('../logger');
 
 var _interceptor = require('./interceptor');
 
@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const application = process.env.NODE_ENV == 'pro' ? '/nodeservice' : '';
 const koaRouterOpts = { prefix: application };
-const router = new _middleware.SwaggerRouter(koaRouterOpts);
+const router = new _swagger.SwaggerRouter(koaRouterOpts);
 
 router.use((0, _interceptor2.default)().routes());
 

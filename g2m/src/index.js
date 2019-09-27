@@ -1,15 +1,18 @@
 import { request, summary, tags, query, body, prefix } from '../middleware/swagger'
 import { logger, serviceLogger, daoLogger } from './logger'
 
+const decorators = {
+    request, 
+    summary, 
+    tags, 
+    query, 
+    body, 
+    prefix
+}
 
 export {
-    request,
-    summary,
-    tags,
-    query,
-    body,
-    prefix,
     logger,
     serviceLogger,
-    daoLogger
+    daoLogger,
+    decorators
 }

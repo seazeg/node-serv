@@ -15,7 +15,6 @@ export const defaultConfig = (conf) => {
 }
 
 
-
 export function logger(module) {
     return {
         debug: (...args) => {

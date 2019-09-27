@@ -3,18 +3,22 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.daoLogger = exports.serviceLogger = exports.logger = exports.prefix = exports.body = exports.query = exports.tags = exports.summary = exports.request = undefined;
+exports.decorators = exports.daoLogger = exports.serviceLogger = exports.logger = undefined;
 
-var _middleware = require('../middleware');
+var _swagger = require('../middleware/swagger');
 
 var _logger = require('./logger');
 
-exports.request = _middleware.request;
-exports.summary = _middleware.summary;
-exports.tags = _middleware.tags;
-exports.query = _middleware.query;
-exports.body = _middleware.body;
-exports.prefix = _middleware.prefix;
+const decorators = {
+    request: _swagger.request,
+    summary: _swagger.summary,
+    tags: _swagger.tags,
+    query: _swagger.query,
+    body: _swagger.body,
+    prefix: _swagger.prefix
+};
+
 exports.logger = _logger.logger;
 exports.serviceLogger = _logger.serviceLogger;
 exports.daoLogger = _logger.daoLogger;
+exports.decorators = decorators;

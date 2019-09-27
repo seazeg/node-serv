@@ -1,5 +1,5 @@
 import { transports } from 'winston';
-import { formatter, timestampFormatter } from './utils';
+import { formatter, timestampFormatter } from './formatter';
 import 'winston-daily-rotate-file';
 
 export const transport = (conf) => {

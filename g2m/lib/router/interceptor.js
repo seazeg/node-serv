@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _middleware = require('../../../middleware');
+var _swagger = require('../../middleware/swagger');
 
-var _logger = require('../../logger');
+var _logger = require('../logger');
 
-const router = new _middleware.SwaggerRouter();
+const router = new _swagger.SwaggerRouter();
 
 //前置拦截器
 const interceptor = callback => {

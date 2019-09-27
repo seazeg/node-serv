@@ -1,5 +1,5 @@
-import { SwaggerRouter } from '../../../middleware/swagger';
-import { serviceLogger } from '../../logger';
+import { SwaggerRouter } from '../../middleware/swagger';
+import { serviceLogger } from '../logger';
 const router = new SwaggerRouter();
 
 //前置拦截器
