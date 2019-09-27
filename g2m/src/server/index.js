@@ -5,7 +5,6 @@ import log from '../../utils/console';
 export const g2m = {
     run: (config) => {
         pm2.connect(function (err) {
-
             if (err) {
                 log.error(err)
                 process.exit(2)
@@ -35,8 +34,8 @@ export const g2m = {
               `)
 
                 log.info(`::App is listening on ${baseConf.apps.env.PORT||3000}::\n`)
-                // pm2.disconnect();
-                // if (err) log.error(err)
+                pm2.disconnect();
+                if (err) log.error(err)
             });
         });
     }

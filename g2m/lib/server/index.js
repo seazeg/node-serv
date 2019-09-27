@@ -18,7 +18,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const g2m = exports.g2m = {
     run: config => {
         _pm2.default.connect(function (err) {
-
             if (err) {
                 _console2.default.error(err);
                 process.exit(2);
@@ -48,8 +47,8 @@ const g2m = exports.g2m = {
               `);
 
                 _console2.default.info(`::App is listening on ${baseConf.apps.env.PORT || 3000}::\n`);
-                // pm2.disconnect();
-                // if (err) log.error(err)
+                _pm2.default.disconnect();
+                if (err) _console2.default.error(err);
             });
         });
     }

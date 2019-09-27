@@ -5,18 +5,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.loggerConfig = exports.daoLogger = exports.serviceLogger = exports.logger = undefined;
 
-var _default = require('./module/default');
+var _default = require('./model/default');
 
-var _service = require('./module/service');
+var _service = require('./model/service');
 
-var _dao = require('./module/dao');
+var _dao = require('./model/dao');
 
-var _module = require('./module/');
+var _model = require('./model');
 
 exports.logger = _default.logger;
 exports.serviceLogger = _service.serviceLogger;
 exports.daoLogger = _dao.daoLogger;
-exports.loggerConfig = _module.loggerConfig;
+exports.loggerConfig = _model.loggerConfig;
 
 // logger('testDefault1').debug('a', 'b', 'c', 'd');
 // logger('testDefault2').info('a', 'b', 'c', 'd');

@@ -3,11 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.decorators = exports.daoLogger = exports.serviceLogger = exports.logger = undefined;
+exports.g2m = exports.decorators = exports.daoLogger = exports.serviceLogger = exports.logger = undefined;
 
 var _swagger = require('../middleware/swagger');
 
 var _logger = require('./logger');
+
+var _server = require('./server');
 
 const decorators = {
     request: _swagger.request,
@@ -22,3 +24,4 @@ exports.logger = _logger.logger;
 exports.serviceLogger = _logger.serviceLogger;
 exports.daoLogger = _logger.daoLogger;
 exports.decorators = decorators;
+exports.g2m = _server.g2m;

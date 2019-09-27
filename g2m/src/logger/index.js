@@ -1,7 +1,7 @@
-import { logger } from './module/default'
-import { serviceLogger } from './module/service'
-import { daoLogger } from './module/dao'
-import { loggerConfig } from './module/'
+import { logger } from './model/default'
+import { serviceLogger } from './model/service'
+import { daoLogger } from './model/dao'
+import { loggerConfig } from './model'
 
 export{
     logger,
