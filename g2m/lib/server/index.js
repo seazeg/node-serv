@@ -27,7 +27,7 @@ const g2m = exports.g2m = {
                     'script': require('path').resolve(__dirname, 'serv.js')
                 }]
             };
-
+            _console2.default.info(require('path').resolve(__dirname, 'serv.js'));
             baseConf.apps = Object.assign(baseConf.apps[0], config || {});
             _pm2.default.start(baseConf, function (err, apps) {
                 _console2.default.info(`

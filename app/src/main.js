@@ -1,6 +1,5 @@
 import { decorators, daoLogger}  from '../../g2m/lib'
 import run from './screenshot/core';
-import { blue } from 'chalk';
 
 const {request, summary, tags, query, body, prefix} = decorators
 const tag = tags(['Node应用']);
@@ -26,7 +25,7 @@ export default class NodeApp {
     async screenshot(ctx) {
       return new Promise(function (resolve, reject) {
         const { hostName, devic, storagePath } = ctx.validatedQuery;
-        daoLogger('app:screenshot').info('获取参数：', blue(JSON.stringify({ hostName, devic, storagePath })))
+        daoLogger('app:screenshot').info('获取参数：', JSON.stringify({ hostName, devic, storagePath }))
         run({hostName,devic,storagePath}).then(function (result) {
             ctx.body = result
             resolve();

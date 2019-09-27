@@ -1,1 +1,0 @@
-import {run} from '../../g2m/lib'

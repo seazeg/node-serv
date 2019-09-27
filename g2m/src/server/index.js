@@ -14,7 +14,6 @@ export const g2m = {
                     'script': require('path').resolve(__dirname, 'serv.js'),
                 }]
             }
-
             baseConf.apps = Object.assign(baseConf.apps[0], config || {})
             pm2.start(baseConf, function (err, apps) {
                 log.info(`
