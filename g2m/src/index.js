@@ -1,4 +1,4 @@
-import { request, summary, tags, query, body, prefix } from '../middleware'
+import { request, summary, tags, query, body, prefix } from '../middleware/swagger'
 import { logger, serviceLogger, daoLogger } from './logger'
 
 

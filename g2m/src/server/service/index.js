@@ -1,4 +1,4 @@
-import { SwaggerRouter } from '../../../middleware';
+import { SwaggerRouter } from '../../../middleware/swagger';
 import { serviceLogger } from '../../logger';
 import interceptor from './interceptor';
 
