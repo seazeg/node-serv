@@ -13,10 +13,14 @@ var _console = require('../../utils/console');
 
 var _console2 = _interopRequireDefault(_console);
 
+var _servConfig = require('./config/serv.config.js');
+
+var _servConfig2 = _interopRequireDefault(_servConfig);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const g2m = exports.g2m = {
-    run: config => {
+    run: (config = _servConfig2.default) => {
         _pm2.default.connect(function (err) {
             if (err) {
                 _console2.default.error(err);
@@ -27,7 +31,6 @@ const g2m = exports.g2m = {
                     'script': require('path').resolve(__dirname, 'serv.js')
                 }]
             };
-            _console2.default.info(require('path').resolve(__dirname, 'serv.js'));
             baseConf.apps = Object.assign(baseConf.apps[0], config || {});
             _pm2.default.start(baseConf, function (err, apps) {
                 _console2.default.info(`
@@ -46,8 +49,9 @@ const g2m = exports.g2m = {
             ╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝ 
               `);
 
-                _console2.default.info(`::App is listening on ${baseConf.apps.env.PORT || 3000}::\n`);
-                _pm2.default.disconnect();
+                _console2.default.info(`::Visit to http://localhost:${baseConf.apps.env.PORT || 3000}\n`);
+                _console2.default.info(`::Swagger API http://localhost:${baseConf.apps.env.PORT || 3000}/doc/swagger-api\n`);
+                // pm2.disconnect();
                 if (err) _console2.default.error(err);
             });
         });

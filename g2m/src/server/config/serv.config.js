@@ -1,4 +1,4 @@
-{
+export default {
     "name": "dev-server",
     "cwd": "/Users/geng/Project/Person/node-work/app/dist",
     "log_date_format": "YYYY-MM-DD HH:mm Z",
@@ -21,8 +21,8 @@
     "exec_mode": "cluster",
     "env": {
         "NODE_ENV": "dev",
-        "PORT": 3009,
+        "PORT": 5257,
         "PROJECT_PATH": "/Users/geng/Project/Person/node-work/app/dist",
-        "LOGGER_PATH": "/Users/geng/Project/Person/node-work/app/logs/%DATE%"
+        "LOGGER_PATH": "/Users/geng/Project/Person/node-work/logs/%DATE%"
     }
 }

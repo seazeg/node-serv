@@ -8,7 +8,7 @@ var _app = require('./app');
 
 var _logger = require('../logger');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5257;
 
 const run = (conf = {
   PROJECT_PATH: '',

@@ -18,7 +18,7 @@ router.swagger({
   title: 'Node App API',
   description: 'API DOC',
   version: '1.0.0',
-  swaggerHtmlEndpoint: '/doc/swagger-html',
+  swaggerHtmlEndpoint: '/doc/swagger-api',
   swaggerJsonEndpoint: '/doc/swagger-json',
   swaggerOptions: {
     securityDefinitions: {

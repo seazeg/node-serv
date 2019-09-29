@@ -11,7 +11,8 @@ export const transport = (conf) => {
         datePattern: conf.datePattern || 'YYYY-MM-DD',
         zippedArchive: conf.zippedArchive || true,
         prepend: conf.prepend || true,
-        dirname: conf.dirname || require('path').resolve(__dirname, '../../../../logs/%DATE%')
+        dirname: conf.dirname || require('path').resolve(__dirname, '../../../../logs/%DATE%'),
+        level: conf.level || 'debug'
     }
     const transportConsole = new transports.Console({
         json: false,
@@ -26,21 +27,18 @@ export const transport = (conf) => {
     
     const debugTransport = new transports.DailyRotateFile(Object.assign({
         name: 'full',
-        filename: 'debug-%DATE%.log',
-        level: 'debug',
+        filename: 'ALL-%DATE%.log',
         handleExceptions: true
     }, baseConf));
     
     const serviceTransport = new transports.DailyRotateFile(Object.assign({
         name: 'service',
-        filename: 'service-%DATE%.log',
-        level: 'debug'
+        filename: 'service-%DATE%.log'
     }, baseConf));
     
     const daoTransport = new transports.DailyRotateFile(Object.assign({
         name: 'dao',
-        filename: 'dao-%DATE%.log',
-        level: 'debug'
+        filename: 'dao-%DATE%.log'
     }, baseConf));
 
     return {

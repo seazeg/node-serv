@@ -1,9 +1,10 @@
 'use strict';
 import pm2 from 'pm2';
 import log from '../../utils/console';
+import conf from './config/serv.config.js'
 
 export const g2m = {
-    run: (config) => {
+    run: (config=conf) => {
         pm2.connect(function (err) {
             if (err) {
                 log.error(err)
@@ -32,8 +33,9 @@ export const g2m = {
             ╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝ 
               `)
 
-                log.info(`::App is listening on ${baseConf.apps.env.PORT||3000}::\n`)
-                pm2.disconnect();
+                log.info(`::Visit to http://localhost:${baseConf.apps.env.PORT||3000}\n`)
+                log.info(`::Swagger API http://localhost:${baseConf.apps.env.PORT||3000}/doc/swagger-api\n`)
+                // pm2.disconnect();
                 if (err) log.error(err)
             });
         });
