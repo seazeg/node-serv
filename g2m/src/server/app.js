@@ -3,7 +3,7 @@ import bodyParser from 'koa-bodyparser';
 import cors from "koa2-cors";
 import morgan from 'koa-morgan';
 import favicon from 'koa-favicon';
-import { router, config } from '../router';
+import { router, register } from '../router';
 import { serviceLogger } from '../logger';
 import staticFiles from 'koa-static';
 import limit from 'koa2-ratelimit' 
@@ -34,5 +34,5 @@ app
 
 export {
     app,
-    config
+    register
 }

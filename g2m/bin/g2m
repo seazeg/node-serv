@@ -10,7 +10,7 @@ const program = require('commander')
 program
     .version(require('../package.json').version)
     .option('-c, --config <string>', '配置文件')
-    .option('-p, --process <string|number>', '进程标识')
+    .option('-p, --pid <string|number>', '进程标识')
 
 // 定义使用方法
 program.usage('<command>')
@@ -69,6 +69,14 @@ program
     .alias('mo')
     .action(() => {
         require('./command/monit')(program)
+    })
+
+program
+    .command('list')
+    .description('进程列表')
+    .alias('ls')
+    .action(() => {
+        require('./command/list')(program)
     })
 
 program.parse(process.argv)

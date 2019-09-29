@@ -25,19 +25,20 @@ module.exports = {
         switch (type) {
             case 'error':
                 for (let i of arr) {
-                    typeof i === 'object' ? i = JSON.stringify(i) : null
+                    console.log(i);
+                    typeof i === 'object' ? i = JSON.stringify(i) : i
                     temp.push(i.error)
                 };
                 break;
             case 'warn':
                 for (let i of arr) {
-                    typeof i === 'object' ? i = JSON.stringify(i) : null
+                    typeof i === 'object'  ? i = JSON.stringify(i) : i
                     temp.push(i.warn)
                 };
                 break;
             case 'info':
                 for (let i of arr) {
-                    typeof i === 'object' ? i = JSON.stringify(i) : null
+                    typeof i === 'object'  ? i = JSON.stringify(i) : i
                     temp.push(i.info)
                 };
                 break;

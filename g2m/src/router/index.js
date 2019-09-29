@@ -31,11 +31,11 @@ router.swagger({
   }
 });
 
-function config(dir) {
+function register(dir) {
    router.mapDir(dir)
 }
 
 export  {
     router,
-    config
+    register
 }

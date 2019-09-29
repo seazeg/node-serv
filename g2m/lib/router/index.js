@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.config = exports.router = undefined;
+exports.register = exports.router = undefined;
 
 var _swagger = require('../../middleware/swagger');
 
@@ -44,9 +44,9 @@ router.swagger({
   }
 });
 
-function config(dir) {
+function register(dir) {
   router.mapDir(dir);
 }
 
 exports.router = router;
-exports.config = config;
+exports.register = register;

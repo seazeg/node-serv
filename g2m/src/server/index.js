@@ -35,9 +35,14 @@ export const g2m = {
 
                 log.info(`::Visit to http://localhost:${baseConf.apps.env.PORT||3000}\n`)
                 log.info(`::Swagger API http://localhost:${baseConf.apps.env.PORT||3000}/doc/swagger-api\n`)
-                // pm2.disconnect();
+                pm2.disconnect();
                 if (err) log.error(err)
             });
         });
+        setTimeout(() => {
+            process.env.PM2_USAGE = 'CLI'
+            pm2.list();
+            process.env.PM2_USAGE = 'NOCLI'
+        }, 1000);
     }
 }

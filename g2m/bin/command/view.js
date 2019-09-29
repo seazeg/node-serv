@@ -8,7 +8,7 @@ module.exports = (program) => {
             log.error(err)
             process.exit(2);
         }
-        pm2.describe(program.process || 'all')
+        pm2.describe(program.pid || 'all')
     })
 }
 

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.config = exports.app = undefined;
+exports.register = exports.app = undefined;
 
 var _koa = require('koa');
 
@@ -57,4 +57,4 @@ app.use(_koa2Ratelimit2.default.RateLimit.middleware({
 }).use(_router.router.routes(), _router.router.allowedMethods());
 
 exports.app = app;
-exports.config = _router.config;
+exports.register = _router.register;

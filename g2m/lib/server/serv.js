@@ -14,14 +14,12 @@ const run = (conf = {
   PROJECT_PATH: '',
   LOGGER_PATH: ''
 }) => {
-  (0, _app.config)(conf.PROJECT_PATH || process.env.PROJECT_PATH || '/Users/geng/Project/Person/node-work/app/dist');
+  (0, _app.register)(conf.PROJECT_PATH || process.env.PROJECT_PATH || '/Users/geng/Project/Person/node-work/app/dist');
   (0, _logger.loggerConfig)({
     dirname: conf.LOGGER_PATH || process.env.LOGGER_PATH
   });
 
-  _app.app.listen(PORT, () => {
-    (0, _logger.serviceLogger)('server:serv').info(`App is listening on ${PORT}`);
-  });
+  _app.app.listen(PORT);
   _app.app.on('error', (err, ctx) => {
     (0, _logger.serviceLogger)('server:serv').error(`server error`, err);
   });
