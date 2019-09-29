@@ -10,18 +10,15 @@ module.exports = (program) => {
         }
         pm2.delete(program.pid || 'all', function (err, apps) {
             if (err) {
-                log.error(err)
+                log.warn(`Process not found`)
+                process.exit(2)
             } else {
                 log.info(`Successful >> The process whose name or ID is [${program.pid||'all'}] has deleted`)
+                
             }
             pm2.disconnect();
         })
-        setTimeout(() => {
-            process.env.PM2_USAGE = 'CLI'
-            pm2.list()
-            process.env.PM2_USAGE = 'NOCLI'
-        }, 1000);
+
+ 
     })
-
-
 }

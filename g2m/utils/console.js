@@ -20,26 +20,67 @@ module.exports = {
         let arr = Array.prototype.slice.call(arguments);
         this.__log('info', arr);
     },
+    debug() {
+        let arr = Array.prototype.slice.call(arguments);
+        this.__log('debug', arr);
+    },
     __log(type, arr) {
         let temp = [];
         switch (type) {
             case 'error':
                 for (let i of arr) {
-                    console.log(i);
-                    typeof i === 'object' ? i = JSON.stringify(i) : i
-                    temp.push(i.error)
+                    if (i instanceof Object) {
+                        if (i instanceof Error) {
+                            temp.push(i);
+                        } else {
+                            i = JSON.stringify(i)
+                            temp.push(i.error);
+                        }
+                    } else {
+                        temp.push(i.error);
+                    }
                 };
                 break;
             case 'warn':
                 for (let i of arr) {
-                    typeof i === 'object'  ? i = JSON.stringify(i) : i
-                    temp.push(i.warn)
+                    if (i instanceof Object) {
+                        if (i instanceof Error) {
+                            temp.push(i);
+                        } else {
+                            i = JSON.stringify(i)
+                            temp.push(i.warn);
+                        }
+                    } else {
+                        temp.push(i.warn);
+                    }
                 };
                 break;
             case 'info':
                 for (let i of arr) {
-                    typeof i === 'object'  ? i = JSON.stringify(i) : i
-                    temp.push(i.info)
+                    if (i instanceof Object) {
+                        if (i instanceof Error) {
+                            temp.push(i);
+                        } else {
+                            i = JSON.stringify(i)
+                            temp.push(i.info);
+                        }
+                    } else {
+                        temp.push(i.info);
+                    }
+                };
+                break;
+            case 'debug':
+                for (let i of arr) {
+                    if (i instanceof Object) {
+                        if (i instanceof Error) {
+                            temp.push(i);
+                        } else {
+                            i = JSON.stringify(i)
+                            temp.push(i.debug);
+                        }
+                    } else {
+                        temp.push(i.debug);
+                    }
                 };
                 break;
             default:

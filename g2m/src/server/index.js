@@ -39,10 +39,5 @@ export const g2m = {
                 if (err) log.error(err)
             });
         });
-        setTimeout(() => {
-            process.env.PM2_USAGE = 'CLI'
-            pm2.list();
-            process.env.PM2_USAGE = 'NOCLI'
-        }, 1000);
     }
 }

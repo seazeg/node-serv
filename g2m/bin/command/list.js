@@ -1,8 +1,10 @@
 'use strict';
 const pm2 = require('pm2')
 
+process.env.PM2_USAGE = 'CLI'
 module.exports = (program) => {
-    process.env.PM2_USAGE = 'CLI'
     pm2.list()
-    process.env.PM2_USAGE = 'NOCLI'
+    setTimeout(() => {
+        process.env.PM2_USAGE = 'NOCLI'
+    }, 500);
 }
