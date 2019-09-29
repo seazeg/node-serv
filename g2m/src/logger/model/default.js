@@ -7,7 +7,6 @@ export const defaultConfig = (conf) => {
     loggers.add('default', {
         transports: [
             transport(conf).transportConsole,
-            transport(conf).serviceTransport,
             transport(conf).debugTransport
         ],
     });

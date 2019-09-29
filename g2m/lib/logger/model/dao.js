@@ -14,7 +14,7 @@ let daoLog = {};
 
 const daoConfig = exports.daoConfig = conf => {
     _winston.loggers.add('dao', {
-        transports: [(0, _transports.transport)(conf).transportConsole, (0, _transports.transport)(conf).serviceTransport, (0, _transports.transport)(conf).debugTransport]
+        transports: [(0, _transports.transport)(conf).transportConsole, (0, _transports.transport)(conf).daoTransport, (0, _transports.transport)(conf).debugTransport]
     });
     daoLog = _winston.loggers.get('dao');
 };

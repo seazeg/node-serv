@@ -7,7 +7,7 @@ export const daoConfig = (conf) => {
     loggers.add('dao', {
         transports: [
             transport(conf).transportConsole,
-            transport(conf).serviceTransport,
+            transport(conf).daoTransport,
             transport(conf).debugTransport
         ],
     });

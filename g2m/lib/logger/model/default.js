@@ -14,7 +14,7 @@ let defaultLog = {};
 
 const defaultConfig = exports.defaultConfig = conf => {
     _winston.loggers.add('default', {
-        transports: [(0, _transports.transport)(conf).transportConsole, (0, _transports.transport)(conf).serviceTransport, (0, _transports.transport)(conf).debugTransport]
+        transports: [(0, _transports.transport)(conf).transportConsole, (0, _transports.transport)(conf).debugTransport]
     });
     defaultLog = _winston.loggers.get('default');
 };
