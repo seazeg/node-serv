@@ -1,5 +1,6 @@
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
+import formidable from 'koa2-formidable'
 import cors from "koa2-cors";
 import morgan from 'koa-morgan';
 import favicon from 'koa-favicon';
@@ -24,6 +25,7 @@ app
         flush: require('zlib').Z_SYNC_FLUSH
     }))
     .use(helmet())
+    .use(formidable())
     .use(bodyParser())
     .use(cors())
     .use(favicon(__dirname + '../../../static/favicon.ico'))
