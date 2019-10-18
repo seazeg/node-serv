@@ -25,6 +25,14 @@ var _koaFavicon = require('koa-favicon');
 
 var _koaFavicon2 = _interopRequireDefault(_koaFavicon);
 
+var _koaCompress = require('koa-compress');
+
+var _koaCompress2 = _interopRequireDefault(_koaCompress);
+
+var _koaHelmet = require('koa-helmet');
+
+var _koaHelmet2 = _interopRequireDefault(_koaHelmet);
+
 var _router = require('../router');
 
 var _logger = require('../logger');
@@ -44,10 +52,14 @@ const app = new _koa2.default();
 app.use(_koa2Ratelimit2.default.RateLimit.middleware({
     interval: 5000, // 15 minutes = 15*60*1000
     max: 100 // limit each IP to 100 requests per interval
-})).use((0, _koaBodyparser2.default)()).use((0, _koa2Cors2.default)()).use((0, _koaFavicon2.default)(__dirname + '../../../static/favicon.ico')).use((0, _koaStatic2.default)(require('path').join(__dirname + '../../../static'))).use((0, _koaMorgan2.default)('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms')).use(async (ctx, next) => {
-    ctx.set({
-        'X-Frame-Options': 'sameorigin'
-    });
+})).use((0, _koaCompress2.default)({
+    filter: function (content_type) {
+        return (/text/i.test(content_type)
+        );
+    },
+    threshold: 2048,
+    flush: require('zlib').Z_SYNC_FLUSH
+})).use((0, _koaHelmet2.default)()).use((0, _koaBodyparser2.default)()).use((0, _koa2Cors2.default)()).use((0, _koaFavicon2.default)(__dirname + '../../../static/favicon.ico')).use((0, _koaStatic2.default)(require('path').join(__dirname + '../../../static'))).use((0, _koaMorgan2.default)('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms')).use(async (ctx, next) => {
     try {
         await next();
         if (ctx.status === 404) {

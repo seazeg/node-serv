@@ -3,6 +3,8 @@ import bodyParser from 'koa-bodyparser';
 import cors from "koa2-cors";
 import morgan from 'koa-morgan';
 import favicon from 'koa-favicon';
+import compress from 'koa-compress';
+import helmet from 'koa-helmet'
 import { router, register } from '../router';
 import { serviceLogger } from '../logger';
 import staticFiles from 'koa-static';
@@ -14,15 +16,20 @@ app
         interval: 5000, // 15 minutes = 15*60*1000
         max: 100, // limit each IP to 100 requests per interval
     }))
+    .use(compress({
+        filter: function (content_type) {
+            return /text/i.test(content_type)
+        },
+        threshold: 2048,
+        flush: require('zlib').Z_SYNC_FLUSH
+    }))
+    .use(helmet())
     .use(bodyParser())
     .use(cors())
     .use(favicon(__dirname + '../../../static/favicon.ico'))
     .use(staticFiles(require('path').join(__dirname + '../../../static')))
     .use(morgan('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
     .use(async (ctx, next) => {
-        ctx.set({
-            'X-Frame-Options': 'sameorigin'
-        });
         try {
             await next()
             if (ctx.status === 404) {
