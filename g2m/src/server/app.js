@@ -20,6 +20,9 @@ app
     .use(staticFiles(require('path').join(__dirname + '../../../static')))
     .use(morgan('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
     .use(async (ctx, next) => {
+        ctx.set({
+            'X-Frame-Options': 'sameorigin'
+        });
         try {
             await next()
             if (ctx.status === 404) {
@@ -31,6 +34,7 @@ app
         }
     })
     .use(router.routes(), router.allowedMethods())
+
 
 export {
     app,

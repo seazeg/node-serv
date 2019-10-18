@@ -45,6 +45,9 @@ app.use(_koa2Ratelimit2.default.RateLimit.middleware({
     interval: 5000, // 15 minutes = 15*60*1000
     max: 100 // limit each IP to 100 requests per interval
 })).use((0, _koaBodyparser2.default)()).use((0, _koa2Cors2.default)()).use((0, _koaFavicon2.default)(__dirname + '../../../static/favicon.ico')).use((0, _koaStatic2.default)(require('path').join(__dirname + '../../../static'))).use((0, _koaMorgan2.default)('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms')).use(async (ctx, next) => {
+    ctx.set({
+        'X-Frame-Options': 'sameorigin'
+    });
     try {
         await next();
         if (ctx.status === 404) {
