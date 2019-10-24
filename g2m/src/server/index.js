@@ -4,7 +4,7 @@ import log from '../../utils/console';
 import conf from './config/serv.config.js'
 
 export const g2m = {
-    run: (config=conf) => {
+    run: (config = conf) => {
         pm2.connect(function (err) {
             if (err) {
                 log.error(err)

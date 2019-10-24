@@ -20,7 +20,7 @@ const swaggerHTML = (apiPath, options = {}) => {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Swagger UI</title>
+  <title>Node App API</title>
   <link href="/asset/fonts.css" rel="stylesheet">
   <link href="/asset/swagger-ui.css" rel="stylesheet">
 

@@ -1,5 +1,6 @@
 import { decorators, daoLogger}  from '../../g2m/lib'
-import run from './screenshot/core';
+import screenshotCore from './screenshot/core';
+import btSpiderCore from './bt_spider/';
 
 const {request, summary, tags, query, body, prefix} = decorators
 const tag = tags(['Node应用']);
@@ -26,11 +27,13 @@ export default class NodeApp {
       return new Promise(function (resolve, reject) {
         const { hostName, devic, storagePath } = ctx.validatedQuery;
         daoLogger('app:screenshot').info('获取参数：', JSON.stringify({ hostName, devic, storagePath }))
-        run({hostName,devic,storagePath}).then(function (result) {
+        screenshotCore({ hostName, devic, storagePath }).then(function (result) {
             ctx.body = result
             resolve();
         })
       });
     }
+
+
     
 }
