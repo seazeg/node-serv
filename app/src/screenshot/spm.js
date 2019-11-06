@@ -15,7 +15,7 @@ export default async function spmDrawing(page, spmC, isAnnotated) {
                     item.style.cssText = "display:inline-block;border:2px solid red;position:relative;"
 
                     // 对D所在的标签添加遮罩层，再添加数据
-                    temp = `<div style="position: absolute;display: block;width: 100%;height: 100%;top: 0;left: 0;right: 0;bottom: 0;color:red;background: rgba(255,255,255,0.1);z-index:10000;font-size:40px;text-align:center;"><span style="color:red;position: absolute;background: rgba(255,255,255,0.1);top: 0;left: 0;right: 0;bottom: 0;z-index:10002;">C-${i}</span></div>`;
+                    temp = `<div style="position: absolute;display: block;width: 100%;height: 100%;top: 0;left: 0;right: 0;bottom: 0;color:red;background: rgba(255,255,255,0.1);z-index:10000;font-size:32px;text-align:center;"><span style="color:red;position: absolute;background: rgba(255,255,255,0.1);top: 0;left: 0;right: 0;bottom: 0;z-index:10002;">${i}</span></div>`;
     
                     item.insertAdjacentHTML('beforeEnd', temp);
                 }
