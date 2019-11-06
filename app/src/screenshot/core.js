@@ -16,6 +16,7 @@ export default async function run({
     hostName = 'www.haier.com/cn/',
     devic = '14PC',
     storagePath = resolve('/Users/geng/Project/Person/node-work/screenshot/'),
+    isSpm = false,
     spmC = 'header_smarthome_20190920',
     isAnnotated = true
 } = {}) {
@@ -25,7 +26,7 @@ export default async function run({
             // executablePath: config.executablePath,
             headless: config.headless,
             timeout: config.timeout,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            // args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
         await page.emulate(devices[devic])
@@ -37,7 +38,9 @@ export default async function run({
         daoLogger('app:screenshot').info(yellow("开始截图.."))
         dirExists(storagePath)
         let tempName = guid();
-        await spmDrawing(page, spmC, isAnnotated)
+        if(isSpm){
+             await spmDrawing(page, spmC, isAnnotated)
+        }
         await page.screenshot({
             path: `${storagePath}/${tempName}.jpeg`,
             quality: 100,
