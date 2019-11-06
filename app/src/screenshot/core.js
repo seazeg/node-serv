@@ -12,11 +12,12 @@ const config = {
     headless: true,
     timeout: 30000
 }
-;
 export default async function run({
     hostName = 'www.haier.com/cn/',
     devic = '14PC',
-    storagePath = resolve('/Users/geng/Project/Person/node-work/screenshot/')
+    storagePath = resolve('/Users/geng/Project/Person/node-work/screenshot/'),
+    spmC = 'header_smarthome_20190920',
+    isAnnotated = true
 } = {}) {
     try {
         daoLogger('app:screenshot').info(yellow("正在获取页面信息.."))
@@ -36,7 +37,7 @@ export default async function run({
         daoLogger('app:screenshot').info(yellow("开始截图.."))
         dirExists(storagePath)
         let tempName = guid();
-        await spmDrawing(page,'header_smarthome_20190920',true)
+        await spmDrawing(page, spmC, isAnnotated)
         await page.screenshot({
             path: `${storagePath}/${tempName}.jpeg`,
             quality: 100,
