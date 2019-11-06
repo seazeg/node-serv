@@ -15,7 +15,7 @@ const config = {
 export default async function run({
     hostName = 'www.casarte.com',
     devic = '14PC',
-    storagePath = resolve('../../../screenshot/')
+    storagePath = resolve('/Users/geng/Project/Person/node-work/screenshot/')
 } = {}) {
     try {
         daoLogger('app:screenshot').info(yellow("正在获取页面信息.."))
