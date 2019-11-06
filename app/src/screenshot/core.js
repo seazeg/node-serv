@@ -5,15 +5,16 @@ import { guid } from 'eg-utils';
 import { yellow } from 'chalk';
 import dirExists from './utils';
 import { daoLogger } from '../../../g2m/lib'
+import spmDrawing from './spm'
 const resolve = file => _resolve(__dirname, file)
 
 const config = {
     headless: true,
     timeout: 30000
 }
- 
+;
 export default async function run({
-    hostName = 'www.casarte.com',
+    hostName = 'www.haier.com/cn/',
     devic = '14PC',
     storagePath = resolve('/Users/geng/Project/Person/node-work/screenshot/')
 } = {}) {
@@ -35,6 +36,7 @@ export default async function run({
         daoLogger('app:screenshot').info(yellow("开始截图.."))
         dirExists(storagePath)
         let tempName = guid();
+        await spmDrawing(page,'header_smarthome_20190920',true)
         await page.screenshot({
             path: `${storagePath}/${tempName}.jpeg`,
             quality: 100,
@@ -42,7 +44,7 @@ export default async function run({
             type: 'jpeg'
         });
         daoLogger('app:screenshot').info(yellow("完成截图.."))
-        await browser.close();
+        // await browser.close();
         daoLogger('app:screenshot').info(yellow("done!"))
         return {
             data: {
