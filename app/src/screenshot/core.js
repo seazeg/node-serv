@@ -17,7 +17,7 @@ export default async function run({
     devic = '14PC',
     storagePath = resolve('/Users/geng/Project/Person/node-work/screenshot/'),
     isSpm = false,
-    spmC = 'header_smarthome_20190920',
+    spmC = 'header_household_20190920',
     isAnnotated = true
 } = {}) {
     try {
@@ -26,7 +26,7 @@ export default async function run({
             // executablePath: config.executablePath,
             headless: config.headless,
             timeout: config.timeout,
-            // args: ['--no-sandbox', '--disable-setuid-sandbox']
+            args: ['--no-sandbox','--disable-setuid-sandbox','-–no-first-run','–no-zygote','–single-process','–disable-dev-shm-usage','–disable-gpu']
         });
         const page = await browser.newPage();
         await page.emulate(devices[devic])
@@ -48,7 +48,7 @@ export default async function run({
             type: 'jpeg'
         });
         daoLogger('app:screenshot').info(yellow("完成截图.."))
-        // await browser.close();
+        await browser.close();
         daoLogger('app:screenshot').info(yellow("done!"))
         return {
             data: {

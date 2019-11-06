@@ -12,6 +12,9 @@ export default class NodeApp {
      * @param {String} hostName 目标域名
      * @param {String} devic 终端类型
      * @param {String} storagePath 输出路径
+     * @param {Boolean} isSpm 是否标记SPM
+     * @param {String} spmC SPMC参数
+     * @param {Boolean} isAnnotated 是否包含SPMD
      * @returns 
      */
     @request('post', '/screenshot')
