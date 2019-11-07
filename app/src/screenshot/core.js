@@ -26,7 +26,7 @@ export default async function run({
             // executablePath: config.executablePath,
             headless: config.headless,
             timeout: config.timeout,
-            // args: ['--no-sandbox','--disable-setuid-sandbox','-–no-first-run','–no-zygote','–single-process','–disable-dev-shm-usage','–disable-gpu']
+            args: ['--no-sandbox','--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
         await page.emulate(devices[devic])

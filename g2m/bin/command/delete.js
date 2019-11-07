@@ -8,17 +8,26 @@ module.exports = (program) => {
             log.error(err)
             process.exit(2)
         }
-        pm2.delete(program.pid || 'all', function (err, apps) {
+        pm2.stop(program.pid || 'all', function (err, apps) {
             if (err) {
                 log.warn(`Process not found`)
                 process.exit(2)
             } else {
-                log.info(`Successful >> The process whose name or ID is [${program.pid||'all'}] has deleted`)
-                
+                pm2.delete(program.pid || 'all', function (err, apps) {
+                    if (err) {
+                        log.warn(`Process not found`)
+                        process.exit(2)
+                    } else {
+                        log.info(`Successful >> The process whose name or ID is [${program.pid||'all'}] has deleted`)
+
+                    }
+                    pm2.disconnect();
+                })
             }
-            pm2.disconnect();
         })
 
- 
+
+
+
     })
 }
