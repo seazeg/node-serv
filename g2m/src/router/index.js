@@ -2,7 +2,7 @@ import { SwaggerRouter } from '../../middleware/swagger';
 import { serviceLogger } from '../logger';
 import interceptor from './interceptor';
 
-const application = process.env.NODE_ENV == 'pro' ? '/nodeservice' : ''
+const application = '/nodeservice'
 const koaRouterOpts = { prefix: application };
 const router = new SwaggerRouter(koaRouterOpts);
 

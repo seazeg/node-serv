@@ -9,8 +9,11 @@ import helmet from 'koa-helmet'
 import { router, register } from '../router';
 import { serviceLogger } from '../logger';
 import staticFiles from 'koa-static';
-import limit from 'koa2-ratelimit' 
+import limit from 'koa2-ratelimit' ;
+import mount from 'koa-mount';
 const app = new Koa()
+
+const root = '/nodeservice'
 
 app 
     .use(limit.RateLimit.middleware({
@@ -28,8 +31,8 @@ app
     .use(formidable())
     .use(bodyParser())
     .use(cors())
-    .use(favicon(__dirname + '../../../static/favicon.ico'))
-    .use(staticFiles(require('path').join(__dirname + '../../../static')))
+    .use(mount(root,favicon(__dirname + '../../../static/favicon.ico')))
+    .use(mount(root,staticFiles(require('path').join(__dirname + '../../../static'))))
     .use(morgan('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
     .use(async (ctx, next) => {
         try {

@@ -13,7 +13,7 @@ function parseSimpleConfig(config = {}) {
   }).join('\n\t  ');
 }
 const swaggerHTML = (apiPath, options = {}) => {
-  const { swaggerVersion = '3.21.0', display = {} } = options;
+  const { swaggerVersion = '3.21.0', display = {}, root = '/nodeservice' } = options;
   const result = `
 
 <!DOCTYPE html>
@@ -21,8 +21,8 @@ const swaggerHTML = (apiPath, options = {}) => {
 <head>
   <meta charset="UTF-8">
   <title>Node App API</title>
-  <link href="/asset/fonts.css" rel="stylesheet">
-  <link href="/asset/swagger-ui.css" rel="stylesheet">
+  <link href="${root}/asset/fonts.css" rel="stylesheet">
+  <link href="${root}/asset/swagger-ui.css" rel="stylesheet">
 
   <style>
     html
@@ -81,8 +81,8 @@ const swaggerHTML = (apiPath, options = {}) => {
   </svg>
 
   <div id="swagger-ui"></div>
-  <script src="/asset/swagger-ui-bundle.js"></script>
-  <script src="/asset/swagger-ui-standalone-preset.js"></script>
+  <script src="${root}/asset/swagger-ui-bundle.js"></script>
+  <script src="${root}/asset/swagger-ui-standalone-preset.js"></script>
   <script>
   window.onload = function() {
     // Build a system

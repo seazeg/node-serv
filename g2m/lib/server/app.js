@@ -49,9 +49,15 @@ var _koa2Ratelimit = require('koa2-ratelimit');
 
 var _koa2Ratelimit2 = _interopRequireDefault(_koa2Ratelimit);
 
+var _koaMount = require('koa-mount');
+
+var _koaMount2 = _interopRequireDefault(_koaMount);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = new _koa2.default();
+
+const root = '/nodeservice';
 
 app.use(_koa2Ratelimit2.default.RateLimit.middleware({
     interval: 5000, // 15 minutes = 15*60*1000
@@ -63,7 +69,7 @@ app.use(_koa2Ratelimit2.default.RateLimit.middleware({
     },
     threshold: 2048,
     flush: require('zlib').Z_SYNC_FLUSH
-})).use((0, _koaHelmet2.default)()).use((0, _koa2Formidable2.default)()).use((0, _koaBodyparser2.default)()).use((0, _koa2Cors2.default)()).use((0, _koaFavicon2.default)(__dirname + '../../../static/favicon.ico')).use((0, _koaStatic2.default)(require('path').join(__dirname + '../../../static'))).use((0, _koaMorgan2.default)('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms')).use(async (ctx, next) => {
+})).use((0, _koaHelmet2.default)()).use((0, _koa2Formidable2.default)()).use((0, _koaBodyparser2.default)()).use((0, _koa2Cors2.default)()).use((0, _koaMount2.default)(root, (0, _koaFavicon2.default)(__dirname + '../../../static/favicon.ico'))).use((0, _koaMount2.default)(root, (0, _koaStatic2.default)(require('path').join(__dirname + '../../../static')))).use((0, _koaMorgan2.default)('[:remote-addr] - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms')).use(async (ctx, next) => {
     try {
         await next();
         if (ctx.status === 404) {

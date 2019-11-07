@@ -15,7 +15,7 @@ var _interceptor2 = _interopRequireDefault(_interceptor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const application = process.env.NODE_ENV == 'pro' ? '/nodeservice' : '';
+const application = '/nodeservice';
 const koaRouterOpts = { prefix: application };
 const router = new _swagger.SwaggerRouter(koaRouterOpts);
 

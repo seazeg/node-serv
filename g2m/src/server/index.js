@@ -33,8 +33,8 @@ export const g2m = {
             ╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝ 
               `)
 
-                log.info(`::Visit to http://localhost:${baseConf.apps.env.PORT||3000}\n`)
-                log.info(`::Swagger API http://localhost:${baseConf.apps.env.PORT||3000}/doc/swagger-api\n`)
+                log.info(`::Visit to http://localhost:${baseConf.apps.env.PORT||3000}/nodeservice\n`)
+                log.info(`::Swagger API http://localhost:${baseConf.apps.env.PORT||3000}/nodeservice/doc/swagger-api\n`)
                 pm2.disconnect();
                 if (err) log.error(err)
             });
