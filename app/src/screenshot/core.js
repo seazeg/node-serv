@@ -14,10 +14,10 @@ const config = {
 }
 export default async function run({
     hostName = 'www.haier.com/cn/',
-    devic = '14PC',
+    devic = 'iPhone 6',
     storagePath = resolve('/Users/geng/Project/Person/node-work/screenshot/'),
-    isSpm = false,
-    spmC = 'header_household_20190920',
+    isSpm = true,
+    spmC = '',
     isAnnotated = true
 } = {}) {
     try {
@@ -26,13 +26,13 @@ export default async function run({
             // executablePath: config.executablePath,
             headless: config.headless,
             timeout: config.timeout,
-            args: ['--no-sandbox','--disable-setuid-sandbox','-–no-first-run','–no-zygote','–single-process','–disable-dev-shm-usage','–disable-gpu']
+            // args: ['--no-sandbox','--disable-setuid-sandbox','-–no-first-run','–no-zygote','–single-process','–disable-dev-shm-usage','–disable-gpu']
         });
         const page = await browser.newPage();
         await page.emulate(devices[devic])
         await page.goto(`http://${hostName}`, {
             timeout: config.timeout,
-            waitUntil: 'networkidle2'
+            waitUntil: 'networkidle0'
         })
         await autoScroll(page);
         daoLogger('app:screenshot').info(yellow("开始截图.."))
@@ -75,10 +75,10 @@ export default async function run({
 async function autoScroll(page) {
     return page.evaluate(() => {
         return new Promise((resolve, reject) => {
-            var totalHeight = 0;
-            var distance = 100;
-            var timer = setInterval(() => {
-                var scrollHeight = document.body.scrollHeight;
+            let totalHeight = 0;
+            let distance = 500;
+            let timer = setInterval(() => {
+                let scrollHeight = document.body.scrollHeight;
                 window.scrollBy(0, distance);
                 totalHeight += distance;
                 if (totalHeight >= scrollHeight) {

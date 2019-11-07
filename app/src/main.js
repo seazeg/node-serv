@@ -22,10 +22,10 @@ export default class NodeApp {
     @tag
     @query({
         hostName: { type: 'string', description: '目标域名', default: 'www.haier.com/cn/'},
-        devic: { type: 'string', description: '终端类型', default:'14PC'},
+        devic: { type: 'string', description: '终端类型', default:'iPhone 6'},
         storagePath: { type: 'string', description: '输出路径' },
-        isSpm: { type: 'boolean', description: '是否标记SPM', default: false},
-        spmC: { type: 'string', description: 'SPMC参数'},
+        isSpm: { type: 'boolean', description: '是否标记SPM', default: true},
+        spmC: { type: 'string', description: 'SPMC参数', default:'header_household_20190920'},
         isAnnotated: { type: 'boolean', description: '是否包含SPMD', default: true}
     })
     async screenshot(ctx) {
