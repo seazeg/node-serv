@@ -45,7 +45,7 @@ export default async function run({
             path: `${storagePath}/${tempName}.jpg`,
             quality: 100,
             fullPage: true,
-            type: 'jpg'
+            type: 'jpeg'
         });
         daoLogger('app:screenshot').info(yellow("完成截图.."))
         await browser.close();
