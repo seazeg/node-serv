@@ -9,7 +9,7 @@ import spmDrawing from './spm'
 const resolve = file => _resolve(__dirname, file)
 
 const config = {
-    headless: false,
+    headless: true,
     timeout: 30000
 }
 export default async function run({
