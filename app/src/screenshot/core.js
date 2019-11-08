@@ -9,7 +9,7 @@ import spmDrawing from './spm'
 const resolve = file => _resolve(__dirname, file)
 
 const config = {
-    headless: true,
+    headless: false,
     timeout: 30000
 }
 export default async function run({
@@ -26,7 +26,7 @@ export default async function run({
             // executablePath: config.executablePath,
             headless: config.headless,
             timeout: config.timeout,
-            args: ['--no-sandbox','--disable-setuid-sandbox']
+            args: ['--no-sandbox','--disable-setuid-sandbox','-–disable-gpu','–-disable-dev-shm-usage','–-no-zygote','-–single-process']
         });
         const page = await browser.newPage();
         await page.emulate(devices[devic])
