@@ -42,17 +42,17 @@ export default async function run({
              await spmDrawing(page, spmC, isAnnotated)
         }
         await page.screenshot({
-            path: `${storagePath}/${tempName}.jpeg`,
+            path: `${storagePath}/${tempName}.jpg`,
             quality: 100,
             fullPage: true,
-            type: 'jpeg'
+            type: 'jpg'
         });
         daoLogger('app:screenshot').info(yellow("完成截图.."))
         await browser.close();
         daoLogger('app:screenshot').info(yellow("done!"))
         return {
             data: {
-                fileName: `${tempName}.jpeg`
+                fileName: `${tempName}.jpg`
             },
             isSuccess: true,
             resultMsg: "执行成功！"
