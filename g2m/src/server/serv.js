@@ -1,5 +1,6 @@
 import { app, register } from './app';
-import { serviceLogger, loggerConfig } from '../logger';
+import { loggerConfig } from '../logger';
+import log from '../../utils/console';
 
 const PORT = process.env.PORT || 5257
 
@@ -14,11 +15,9 @@ const run = (conf = {
 
   app.listen(PORT)
   app.on('error', (err, ctx) => {
-    serviceLogger('server:serv').error(`server error`, err)
+    log.error(`server error`, err)
   });
 }
-
-
 
 if (process.env.PROJECT_PATH) run();
 

@@ -8,6 +8,12 @@ var _app = require('./app');
 
 var _logger = require('../logger');
 
+var _console = require('../../utils/console');
+
+var _console2 = _interopRequireDefault(_console);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const PORT = process.env.PORT || 5257;
 
 const run = (conf = {
@@ -21,7 +27,7 @@ const run = (conf = {
 
   _app.app.listen(PORT);
   _app.app.on('error', (err, ctx) => {
-    (0, _logger.serviceLogger)('server:serv').error(`server error`, err);
+    _console2.default.error(`server error`, err);
   });
 };
 
