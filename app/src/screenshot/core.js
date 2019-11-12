@@ -6,7 +6,6 @@ import { yellow } from 'chalk';
 import dirExists from './utils';
 import { daoLogger } from '../../../g2m/lib'
 import spmDrawing from './spm'
-const resolve = file => _resolve(__dirname, file)
 
 const config = {
     headless: true,
@@ -14,13 +13,15 @@ const config = {
 }
 export default async function run({
     hostName = 'www.haier.com/cn/',
-    devic = 'iPhone 6',
-    storagePath = resolve('/Users/geng/Project/Person/node-work/screenshot/'),
+    devic = '14PC',
+    storagePath = '',
+    fileName = '',
     isSpm = true,
     spmC = '',
     isAnnotated = true
 } = {}) {
     try {
+        console.log(fileName);
         daoLogger('app:screenshot').info(yellow("正在获取页面信息.."))
         const browser = await puppeteer.launch({
             // executablePath: config.executablePath,
@@ -29,6 +30,7 @@ export default async function run({
             args: ['--no-sandbox','--disable-setuid-sandbox','-–disable-gpu','–-disable-dev-shm-usage','–-no-zygote','-–single-process']
         });
         const page = await browser.newPage();
+        let tempName = null;
         await page.emulate(devices[devic])
         await page.goto(`http://${hostName}`, {
             timeout: config.timeout,
@@ -37,7 +39,11 @@ export default async function run({
         await autoScroll(page);
         daoLogger('app:screenshot').info(yellow("开始截图.."))
         dirExists(storagePath)
-        let tempName = guid();
+        if(!fileName){
+            tempName = guid();
+        }else{
+            tempName = fileName
+        }
         if(isSpm){
              await spmDrawing(page, spmC, isAnnotated)
         }

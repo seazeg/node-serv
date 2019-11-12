@@ -4,9 +4,9 @@ export default async function spmDrawing(page, spmC, isAnnotated) {
         cObj.style.cssText = "border: 2px solid red;";
         if (isAnnotated) {
             //移动端适配
-            if (window.innerWidth <= 750) {
-                document.querySelector('.js_m_menu').click()
+            if (window.innerWidth <= 1200) {
                 if (spmC.includes('header')) {
+                    document.querySelector('.js_m_menu').click()
                     cObj.click();
                 }
             } else {
@@ -15,9 +15,7 @@ export default async function spmDrawing(page, spmC, isAnnotated) {
                 }
             }
 
-            let num = cObj.querySelectorAll('[spm-d]').length
-
-            for (let i = 0; i <= num; i++) {
+            for (let i = 0; i <= cObj.querySelectorAll('[spm-d]').length + 1; i++) {
                 let sdl = cObj.querySelectorAll(`[spm-d="${i}"]`)
                 let temp;
                 for (let item of sdl) {
