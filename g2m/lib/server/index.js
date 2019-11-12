@@ -15,8 +15,6 @@ var _console2 = _interopRequireDefault(_console);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import conf from './config/serv.config.js'
-
 const g2m = exports.g2m = {
     run: config => {
         _pm2.default.connect(function (err) {

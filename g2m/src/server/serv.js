@@ -1,16 +1,12 @@
 import { app, register } from './app';
 import { loggerConfig } from '../logger';
-import log from '../../utils/console';
 
 const PORT = process.env.PORT || 5257
 
-const run = (conf = {
-  PROJECT_PATH: '',
-  LOGGER_PATH: ''
-}) => {
-  register(conf.PROJECT_PATH || process.env.PROJECT_PATH);
+const run = () => {
+  register(process.env.PROJECT_PATH);
   loggerConfig({
-    dirname:conf.LOGGER_PATH ||  process.env.LOGGER_PATH
+    dirname:process.env.LOGGER_PATH
   })
 
   app.listen(PORT)

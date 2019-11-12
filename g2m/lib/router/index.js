@@ -45,7 +45,6 @@ router.swagger({
 });
 
 function register(dir) {
-  console.log(dir);
   router.mapDir(dir);
 }
 

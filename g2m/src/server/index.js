@@ -1,7 +1,6 @@
 'use strict';
 import pm2 from 'pm2';
 import log from '../../utils/console';
-// import conf from './config/serv.config.js'
 
 export const g2m = {
     run: (config) => {
