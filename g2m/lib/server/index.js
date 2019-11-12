@@ -13,14 +13,12 @@ var _console = require('../../utils/console');
 
 var _console2 = _interopRequireDefault(_console);
 
-var _servConfig = require('./config/serv.config.js');
-
-var _servConfig2 = _interopRequireDefault(_servConfig);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import conf from './config/serv.config.js'
+
 const g2m = exports.g2m = {
-    run: (config = _servConfig2.default) => {
+    run: config => {
         _pm2.default.connect(function (err) {
             if (err) {
                 _console2.default.error(err);

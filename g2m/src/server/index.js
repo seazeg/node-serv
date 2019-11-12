@@ -1,10 +1,10 @@
 'use strict';
 import pm2 from 'pm2';
 import log from '../../utils/console';
-import conf from './config/serv.config.js'
+// import conf from './config/serv.config.js'
 
 export const g2m = {
-    run: (config = conf) => {
+    run: (config) => {
         pm2.connect(function (err) {
             if (err) {
                 log.error(err)

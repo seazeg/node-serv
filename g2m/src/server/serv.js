@@ -7,7 +7,7 @@ const run = (conf = {
   PROJECT_PATH: '',
   LOGGER_PATH: ''
 }) => {
-  register(conf.PROJECT_PATH || process.env.PROJECT_PATH || '/Users/geng/Project/Person/node-work/app/dist');
+  register(conf.PROJECT_PATH || process.env.PROJECT_PATH);
   loggerConfig({
     dirname:conf.LOGGER_PATH ||  process.env.LOGGER_PATH
   })
@@ -17,6 +17,8 @@ const run = (conf = {
     serviceLogger('server:serv').error(`server error`, err)
   });
 }
+
+
 
 if (process.env.PROJECT_PATH) run();
 
