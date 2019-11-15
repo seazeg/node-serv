@@ -7,7 +7,7 @@
     "pid_file": "/Users/geng/Project/Person/node-work/logs/sys-env/node-geo-api.pid",
     "min_uptime": "200s",
     "max_restarts": 10,
-    "max_memory_restart": "1M",
+    "max_memory_restart": "500M",
     "watch": [
         "src",
         "lib"

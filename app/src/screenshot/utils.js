@@ -6,7 +6,7 @@ function getStat(path) {
     return new Promise((resolve, reject) => {
         stat(path, (err, stats) => {
             if (err) {
-                daoLogger('app:screenshot').error('目标目录不存在..')
+                daoLogger('app:screenshot').error('目标目录不存在..',err)
                 resolve(false);
             } else {
                 resolve(stats);
@@ -20,7 +20,8 @@ function mkdir(dir) {
     return new Promise((resolve, reject) => {
         _mkdir(dir, err => {
             if (err) {
-                resolve(false);
+                daoLogger('app:screenshot').error('目录创建失败..',err)
+                resolve();
             } else {
                 daoLogger('app:screenshot').info('目录创建成功..')
                 resolve(true);
