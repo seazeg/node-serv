@@ -10,7 +10,7 @@ require("events").EventEmitter.defaultMaxListeners = 10;
 
 const config = {
     headless: true,
-    timeout: 50000
+    timeout: 60000
 }
 export default async function run({
     hostName = '',
@@ -27,13 +27,6 @@ export default async function run({
         timeout: config.timeout,
         args: ['--no-sandbox', '--disable-setuid-sandbox', '-–disable-gpu', '–-disable-dev-shm-usage', '–-no-zygote', '-–single-process']
     }).then(async browser => {
-        const page = await browser.newPage();
-        await page.goto(`${hostName}`, {
-            timeout: config.timeout,
-            waitUntil: 'networkidle2'
-        }).catch(err => {
-            daoLogger('app:screenshot').error(red('加载出现异常=> ' + err))
-        })
         try {
             let hasError = false
 
