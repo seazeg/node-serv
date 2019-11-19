@@ -28,7 +28,7 @@ export default async function run({
         args: ['--no-sandbox', '--disable-setuid-sandbox', '-–disable-gpu', '–-disable-dev-shm-usage', '–-no-zygote', '-–single-process']
     }).then(async browser => {
         try {
-            let hasError = false
+            let errorMsg = ""
 
             dirExists(trim(storagePath, 'side'))
             daoLogger('app:screenshot').info(yellow("正在获取页面信息.."))
@@ -41,6 +41,8 @@ export default async function run({
                 waitUntil: 'networkidle2'
             }).catch(err => {
                 daoLogger('app:screenshot').error(red(`${fileName}>加载出现异常=> ${err}`))
+                browser.close();
+                errorMsg = err
             })
 
             await autoScroll(page);
@@ -64,10 +66,10 @@ export default async function run({
             }).catch(err => {
                 daoLogger('app:screenshot').error(red('截图出现异常=> ' + err))
                 browser.close();
-                hasError = true
+                errorMsg = err
             })
 
-            if (!hasError) {
+            if (!errorMsg) {
                 daoLogger('app:screenshot').info(yellow("完成截图.."))
                 await browser.close();
                 daoLogger('app:screenshot').info(yellow("done!"))
@@ -80,26 +82,21 @@ export default async function run({
                 }
             } else {
                 await browser.close();
-                let errorlst = {
-                    data: "",
+                return {
+                    data: errorMsg,
                     isSuccess: false,
                     resultMsg: "执行失败！"
                 };
-                return errorlst
             }
 
         } catch (error) {
             daoLogger('app:screenshot').error(red(error))
             await browser.close();
-            let errorlst = {
-                data: "",
+            return {
+                data: error,
                 isSuccess: false,
-                resultMsg: "执行失败！"
+                resultMsg: error.code == 'ENOENT'?"目录无效":"执行失败！"
             };
-            if (error.code == 'ENOENT') {
-                errorlst.resultMsg = "目录无效"
-            }
-            return errorlst
         }
     }).catch(err => {
         daoLogger('app:screenshot').error(red('实例出现异常=> ' + err))
