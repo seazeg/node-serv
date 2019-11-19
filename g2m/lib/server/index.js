@@ -47,6 +47,7 @@ const g2m = exports.g2m = {
 
                 _console2.default.info(`::Visit to http://localhost:${baseConf.apps.env.PORT || 3000}/nodeservice\n`);
                 _console2.default.info(`::Swagger API http://localhost:${baseConf.apps.env.PORT || 3000}/nodeservice/doc/swagger-api\n`);
+                _console2.default.info(`::Nodejs Monitor http://localhost:12333\n`);
                 _pm2.default.disconnect();
                 if (err) _console2.default.error(err);
             });

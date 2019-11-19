@@ -34,6 +34,7 @@ export const g2m = {
 
                 log.info(`::Visit to http://localhost:${baseConf.apps.env.PORT||3000}/nodeservice\n`)
                 log.info(`::Swagger API http://localhost:${baseConf.apps.env.PORT||3000}/nodeservice/doc/swagger-api\n`)
+                log.info(`::Nodejs Monitor http://localhost:12333\n`)
                 pm2.disconnect();
                 if (err) log.error(err)
             });
