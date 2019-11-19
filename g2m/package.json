@@ -9,7 +9,7 @@
     "prod": "g2m start --config /Users/geng/Project/Person/node-work/app/config/serv.pro.config.json",
     "test": "jest",
     "serv": "cd ..;cd app;npm run build;cd ..;cd g2m;babel src -d lib;node lib/test.js",
-    "build": "babel src -d lib",
+    "build": "cd ..;cd app;npm run build;cd ..;cd g2m;babel src -d lib;",
     "db": "babel src -d lib;cd lib/database;node model.js"
   },
   "author": {
