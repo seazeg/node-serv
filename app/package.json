@@ -13,7 +13,7 @@
   "author": "Evan.G",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "chalk": "^2.4.1",
     "del": "^5.1.0",
     "eg-utils": "^1.1.52",
